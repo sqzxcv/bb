@@ -1,0 +1,14 @@
+<div class="thumb">
+    <div class="thumb-content">
+        <a target="_blank" href="{{detail}}" class="kt_imgrc" title="{{title}}">
+            <span class="preview">
+                <img src="{{thumbnail}}" alt="{{title}}" onmouseover="KT_rotationStart(this, '{{thumbnails}}', 5)" onmouseout="KT_rotationStop(this)" />
+                <span class="duration">{{duration}}</span>
+                <span class="rating">{{rate}}</span></span>
+            <span class="name">{{title}}</span>
+            <span class="desc">
+                <span class="views">{{view_count}}次观看</span>
+                <span class="data">8 小时 前</span></span>
+        </a>
+    </div>
+</div>

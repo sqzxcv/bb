@@ -1,0 +1,18 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.NeedHidden {
+
+  visibility:hidden
+}
+
+.home-title {
+  font-size: 300%;
+  text-align: center;
+}
