@@ -13,7 +13,7 @@ module.exports = {
       script: "./bin/www",
       out_file: "/var/log/lovevideo/app.log",
       error_file: "/var/log/lovevideo/err.log",
-      port: "8080",
+      port: "80",
       env: {
         COMMON_VARIABLE: 'true'
       },
