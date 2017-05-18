@@ -34,7 +34,7 @@ module.exports = {
       ref: 'origin/master',
       repo: 'git@github.com:sqzxcv/bb.git',
       path: '/var/www/production',
-      "post-deploy": 'npm install && pm2 reload ecosystem.config.js --env production'
+      "post-deploy": 'git pull && npm install && pm2 reload ecosystem.config.js --env production'
     },
     dev: {
       user: 'root',
