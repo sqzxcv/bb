@@ -1,0 +1,5 @@
+非常重要_______上线后,对数据库远程访问要添加 ip 限制,负责别人拿到代码后,可以直接将数据删除
+参照下面文章完成服务器相关安全设置
+
+发布步骤
+pm2 deploy ecosystem.config.js production setup
