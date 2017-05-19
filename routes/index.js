@@ -21,11 +21,11 @@ module.exports = function (index, req, res, next, callback) {
     });
 
     // var self = this;
-    var videoCountPage=30;
+    var videoCountPage = 30;
     pool.getConnection(function (err, connection) {
 
 
-        connection.query("select * from videos order by videoid desc limit "+ videoCountPage * index + ", "+videoCountPage+";", function (err, results, fields) {
+        connection.query("select * from videos order by videoid desc limit " + videoCountPage * index + ", " + videoCountPage + ";", function (err, results, fields) {
 
             if (results.length != 0) {
 
@@ -67,14 +67,16 @@ module.exports = function (index, req, res, next, callback) {
                         pageIndexs = "<a href=\"/" + (index - 1) + "/\" class=\"btn\" title=\"Page 02\">上一页</a>";
                     }
                     pageIndexs += "<span> • </span>";
-                    pageIndexs += "<span class='btn active'>" + (index +1) + "</span>";
+                    pageIndexs += "<span class='btn active'>" + (index + 1) + "</span>";
                     pageIndexs += "<span> • </span>";
                     pageIndexs += "<a href=\"/" + (index + 1) + "/\" class=\"btn\" title=\"Page 02\">下一页</a>";
                     res.render('index', {
                         "VIDEOITEM": node,
                         "title": "私人影院",
-                        "video_count": "展示"+ results.length+"个视频",
-                        "pageIndexs": pageIndexs
+                        "video_count": "展示" + results.length + "个视频",
+                        "pageIndexs": pageIndexs,
+                        "tdappid": config["tdappid"],
+                        "appversion": config["appversion"]
                     });
                 } else {
                     next();
@@ -96,7 +98,9 @@ module.exports = function (index, req, res, next, callback) {
                     "VIDEOITEM": "",
                     "title": "私人影院",
                     "video_count": 没有更多,
-                    "pageIndexs": pageIndexs
+                    "pageIndexs": pageIndexs,
+                    "tdappid": config["tdappid"],
+                    "appversion": config["appversion"]
                 });
             }
             callback(err);

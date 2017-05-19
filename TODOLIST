@@ -2,5 +2,5 @@
 参照下面文章完成服务器相关安全设置
 
 发布步骤
-第一次部署 pm2 deploy ecosystem.config.js production setup
-后续部署:pm2 deploy ecosystem.config.js production
+第一步安装 pm2 deploy ecosystem.config.js production setup
+第二步部署:pm2 deploy ecosystem.config.js production

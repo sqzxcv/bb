@@ -3,12 +3,13 @@
 <html lang="en">
     
     <head>
+        <script src="http://sdk.talkingdata.com/app/h5/v1?appid={{tdappid}}&vn=love8video&vc={{appversion}}"></script>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="Cache-Control" content="no-transform">
         <meta http-equiv="Cache-Control" content="no-siteapp">
-        <title>test</title>
+        <title>{{title}}</title>
         <meta name="description" content="久久热视频,第一时间观看国产,日韩,欧美最新成人影片,播放流畅，无卡顿.久久热在线视频只适合18岁或以上人士观看。本网站内容可能令人反感！切不可将本站的内容出售、出租、交给或借予年龄未满18岁的人士或将本网站内容向未满18岁人士出示、播放或放映。本站内容收录于世界各地，如果您发现本站的某些影片内容不合适，或者某些影片侵犯了您的的版权，请联系我们.">
         <meta name="keywords" content="久久热视频,99热视频,久久视频,99视频,国产自拍,久久热视频下载,注册久久热账号,最新H视频,成人,超碰积分,91积分,免费超碰,超碰VIP,免费91porn,91VIP">
         <meta name="generator" content="久久热视频 (http://www.99re5.com)">

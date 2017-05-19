@@ -1,6 +1,6 @@
 var mysql = require('mysql');
 var async = require("async");
-var config = require('../config'); 
+var config = require('../config');
 
 module.exports = function (index, req, res, next, callback) {
 
@@ -27,7 +27,9 @@ module.exports = function (index, req, res, next, callback) {
                     "_XXXXXRESOURCE_ADDRESS_": rootUrl + results[0]['lq_content'],
                     '_XXXPREVIEW_ADDR_': "http://" + results[0]['preview_url'],
                     'XXXWIDTH_': results[0]['width'],
-                    'XXXHEIGHT_': results[0]['height']
+                    'XXXHEIGHT_': results[0]['height'],
+                    "tdappid": config["tdappid"],
+                    "appversion": config["appversion"]
                 });
             } else {
                 next();
