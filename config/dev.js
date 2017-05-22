@@ -1,6 +1,7 @@
 var config = {
     "dbhost":"172.104.91.83",
     "dbuser":"admin",
-    "dbpwd":"Anhuiqiang851"
+    "dbpwd":"Anhuiqiang851",
+    "tdappid":""
 };
 module.exports = config;

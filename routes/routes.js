@@ -1,6 +1,7 @@
 var index = require('./index');
 var users = require('./users');
 var videoPreview = require('./videoPreview');
+var login = require('./login');
 
 var mysql = require('mysql');
 var async = require("async");
@@ -30,5 +31,10 @@ module.exports = function (app) {
         var videoIndex = parseInt(req.params.id, 10);
 
         videoPreview(videoIndex, req, res, next, function (err) { });
+    });
+
+    app.get('/login/', function(req, res,next) {
+
+        login(req, res,next);
     });
 };
