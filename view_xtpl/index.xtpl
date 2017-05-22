@@ -17,15 +17,16 @@
         <link href="../resource/style.css" rel="stylesheet">
         <link href="../resource/adv.css" rel="stylesheet">
         <link href="../stylesheets/style.css" rel="stylesheet">
-        <script async="" src="../resource/analytics.js"></script>
+        <!-- <script async="" src="../resource/analytics.js"></script> -->
         <script language="javascript">if (screen.width < 1600) {
 
                 document.write('<link href="../resource/adv1600.css?v=2" rel="stylesheet" />')
-            }</script>
-        <link href="http://www.99vv1.com/rss/" rel="alternate" type="application/rss+xml">
+        }</script>
+        <!-- <link href="http://www.99vv1.com/rss/" rel="alternate" type="application/rss+xml"> 
         <link href="http://www.99vv1.com/latest-updates/2/" rel="next">
         <script type="text/javascript" src="../resource/KernelTeamVideoSharingSystem.js"></script>
-        <script type="text/javascript" src="../resource/KernelTeamVideoSharingMembers.js"></script>
+        <script type="text/javascript" src="../resource/KernelTeamVideoSharingMembers.js"></script> -->
+
         <script type="text/javascript" src="../resource/KernelTeamImageRotator.js"></script>
         <script type="text/javascript">KT_rotationEngineStartup(0.2, 0.5);</script>
         <script src="../resource/header1.js"></script>
@@ -37,8 +38,12 @@
                 <div class="container"></div>
             </div>
             <header>
-                                    <div class="home-title">{{title}}
-                        </div>
+                <div class="home-title">
+                    <span>{{title}}</span><span>•</span><span>私人影院</span>
+                </div><br/>
+                <div class="subtitle">
+                    网站发布地址: <strong>love8video@gmai.com</strong>(请记住邮箱),以便及时找到回家的路,如果有任何问题请邮件通知我们.
+                </div>
                 <div class="header-inner NeedHidden">
                     <div class="container clearfix">
                         <div class="wrap-logo">

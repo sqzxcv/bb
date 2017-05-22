@@ -17,13 +17,17 @@ module.exports = function (app) {
     app.get('/', function (req, res, next) {
         //res.render('index', { title: '首页' });
         // next();
-        index(0, req, res, next, function (err) { });
+        if(req.url =="/") {
+            index(0, req, res, next, function (err) { });
+        }
     });
     app.get('/:id', function (req, res, next) {
         //res.render('index', { title: '首页' });
         // next();
         var pageIndex = parseInt(req.params.id, 10);;
-        index(pageIndex, req, res, next, function (err) { });
+        if (pageIndex >=0 ) {
+            index(pageIndex, req, res, next, function (err) { });
+        }
     });
 
     app.get('/detail/:id', function (req, res, next) {

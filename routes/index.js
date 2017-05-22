@@ -72,7 +72,7 @@ module.exports = function (index, req, res, next, callback) {
                     pageIndexs += "<a href=\"/" + (index + 1) + "/\" class=\"btn\" title=\"Page 02\">下一页</a>";
                     res.render('index', {
                         "VIDEOITEM": node,
-                        "title": "私人影院",
+                        "title": "爱吧",
                         "video_count": "展示" + results.length + "个视频",
                         "pageIndexs": pageIndexs,
                         "tdappid": config["tdappid"],
@@ -96,8 +96,8 @@ module.exports = function (index, req, res, next, callback) {
                 pageIndexs += "<a href=\"/" + (index + 1) + "/\" class=\"btn\" title=\"Page 02\">下一页</a>";
                 res.render('index', {
                     "VIDEOITEM": "",
-                    "title": "私人影院",
-                    "video_count": 没有更多,
+                    "title": "爱吧",
+                    "video_count": "没有更多",
                     "pageIndexs": pageIndexs,
                     "tdappid": config["tdappid"],
                     "appversion": config["appversion"]
