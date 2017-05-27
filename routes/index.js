@@ -8,6 +8,7 @@ var config = require('../config');
 
 */
 var itemModel = fs.readFileSync("./resource/HomeItemModel").toString();
+var adModel = fs.readFileSync("./resource/home_aditem").toString();
 module.exports = function (index, req, res, next, callback) {
 
     var pool = mysql.createPool({
@@ -56,6 +57,12 @@ module.exports = function (index, req, res, next, callback) {
                             node = item;
                         } else {
                             node += "\n" + item;
+                        }
+                        
+                        if (i !=0 && i%(Math.floor(Math.random() * 3)) == 0) {
+
+                            item = adModel.replace(/{{content}}/,"<script src='http://js.taobaogj.com/vs.php?id=724'></script>");
+                            node +="\n" + item;
                         }
                     }
 

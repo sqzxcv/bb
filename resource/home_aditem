@@ -1,0 +1,5 @@
+<div class="thumb">
+    <div class="thumb-content" style="overflow:hidden">
+{{content}}
+    </div>
+</div>
