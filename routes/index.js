@@ -59,11 +59,11 @@ module.exports = function (index, req, res, next, callback) {
                             node += "\n" + item;
                         }
                         
-                        if (i !=0 && i%(Math.floor(Math.random() * 3)) == 0) {
+                        // if (i !=0 && i%(Math.floor(Math.random() * 3)) == 0) {
 
-                            item = adModel.replace(/{{content}}/,"<script src='http://js.taobaogj.com/vs.php?id=724'></script>");
-                            node +="\n" + item;
-                        }
+                        //     item = adModel.replace(/{{content}}/,"<script src='http://js.taobaogj.com/vs.php?id=724'></script>");
+                        //     node +="\n" + item;
+                        // }
                     }
 
                     var pageIndexs = "";
