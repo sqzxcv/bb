@@ -1,0 +1,32 @@
+{{extend ("./layout/layout")}}
+
+{{#block ("head")}}
+	<style type="text/css">
+
+	</style>
+
+{{/block}}
+
+{{#block ("body")}}
+    {{#block("header")}}
+        <div class="title">
+        {{title}}
+        </div>
+    {{/block}}
+
+    <div class="account">
+        <div><span>username(用户名):</span><span>{{username}}</span></div>
+        <div><span>password(密码):</span><span>{{password}}</span></div>
+        <div><span>Expiration(过期时间):</span><span>{{expire}}</span></div>
+        <div>
+            Please keep your account and password, if you lose, please contact love8video@gmail.com, and attach the order screenshot.<br/>
+            请妥善保管好账号和密码,如果遗失请邮件联系 love8video@gmail.com,并附上订单截图.<br/>
+            口座番号とパスワードを保管してください、電子メールをしてくださいあなたは、接触love8video@gmail.comを失うためのスクリーンショットを添付した場合。
+        </div>
+    </div>
+
+    {{#block("footer")}}
+
+    {{/block}}
+
+{{/block}}

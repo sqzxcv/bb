@@ -2,6 +2,7 @@ var index = require('./index');
 var users = require('./users');
 var videoPreview = require('./videoPreview');
 var login = require('./login');
+var successPay = require('./success');
 
 var mysql = require('mysql');
 var async = require("async");
@@ -40,5 +41,11 @@ module.exports = function (app) {
     app.get('/login/', function(req, res,next) {
 
         login(req, res,next);
+    });
+    app.get('/success/SFDsdfsdsddf34df5DS53FsdD898GDF0dfd123243',function(req,res,next) {
+
+        successPay(req,res,next,function(err) {
+
+        });
     });
 };

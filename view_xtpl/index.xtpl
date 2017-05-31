@@ -38,6 +38,25 @@
                 <div class="container"></div>
             </div>
             <header>
+                <div>
+                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                    <input type="hidden" name="cmd" value="_s-xclick">
+                    <input type="hidden" name="charset" value="utf-8"/> 
+                    <table>
+                    <tr><td><input type="hidden" name="on0" value="VIP 百万高清视频-每日更新-服务套餐">VIP 百万高清视频-每日更新-服务套餐</td></tr><tr><td><select name="os0">
+                        <option value="一天(24小时)">一天(24小时) $ 1.00 USD</option>
+                        <option value="包周">包周 $ 5.00 USD</option>
+                        <option value="包月">包月 $ 20.00 USD</option>
+                        <option value="包年">包年 $ 60.00 USD</option>
+                    </select> </td></tr>
+                    </table>
+                    <input type="hidden" name="currency_code" value="USD">
+                    <input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----MIIIuQYJKoZIhvcNAQcEoIIIqjCCCKYCAQExggEwMIIBLAIBADCBlDCBjjELMAkGA1UEBhMCVVMxCzAJBgNVBAgTAkNBMRYwFAYDVQQHEw1Nb3VudGFpbiBWaWV3MRQwEgYDVQQKEwtQYXlQYWwgSW5jLjETMBEGA1UECxQKbGl2ZV9jZXJ0czERMA8GA1UEAxQIbGl2ZV9hcGkxHDAaBgkqhkiG9w0BCQEWDXJlQHBheXBhbC5jb20CAQAwDQYJKoZIhvcNAQEBBQAEgYCE6cVziYNLC/5CDoENe4SfXDulhsm0+HwBOSP2SQZ8P0z76If4NLu4hqobW5cxx9etUndNbohqop8HFqZnzrRZbp+aA57+c+OXEU5olAQMgCJ4nM7LsWcG3jAHON1Nz2P9tUk7qUMVcx/vBJ2NWTgigtDdFMs5naM1RQxH7oIeTzELMAkGBSsOAwIaBQAwggI1BgkqhkiG9w0BBwEwFAYIKoZIhvcNAwcECBKV/mzR1xocgIICEADuG0YY4qTW+9FHvRLwttJvl4fLBUNQjIPH7Cnm+Yiwk4hIM//4l5aty0BuBp4JTcVrcJC3vkLudsSUZ/3wycAFbac9WCPTkVbkoc4LxozXnkngSpB/EKBXLInDYLKZHx6DPk2yafZrBVFgolpIJys+GOhdKptz8Oqon99FJh9II2ZyWD7fE4jyMzdO6Jy0+TSdlf+myt+GDYSgt6vCecDRYp3pMMS5nikTigYq/dpJob02SQV1OPryjiOn2AfPAEZi6Yx55Famg3ebbuJw3zD5NZCAHjorsIjoG0MD8hCACf7juCuF+a1oHqnhlaS6vlgdxZDJmSvylUy9nUth9onmNvr2lBmhQi0VlnF7DBXow7mRVXAfGbv0Tk7T46QtpeNDjj50Kr8KsB41LMzi66Kk5DBMc1QFtZkKmX9TD20jZpovHhfCV86gtadq1o/kBnNWS3eINeiEKIaDEWeKimBCqfLA7rCM0m/zPAd31MCe/VNdqRZ+r5QFRBMn9lnNflJPzQbK2VgM1pl8UeKvFuJJTZ5Q+NLynHRFb6rYudxeZD2DBXjgeG53iYKy/IHrkPT/Miz49lPwy/z9bN2wAeX4c4xG0VeBUM9QE03AAuFKOWePSZCLLa5Peb4XQmXeQoPHiKG1AyOTB9FkIYzjbJqGuCwnIFZEhY+twS+VTkxsb6SEyEjiKF0sTtA8e2ochaCCA4cwggODMIIC7KADAgECAgEAMA0GCSqGSIb3DQEBBQUAMIGOMQswCQYDVQQGEwJVUzELMAkGA1UECBMCQ0ExFjAUBgNVBAcTDU1vdW50YWluIFZpZXcxFDASBgNVBAoTC1BheVBhbCBJbmMuMRMwEQYDVQQLFApsaXZlX2NlcnRzMREwDwYDVQQDFAhsaXZlX2FwaTEcMBoGCSqGSIb3DQEJARYNcmVAcGF5cGFsLmNvbTAeFw0wNDAyMTMxMDEzMTVaFw0zNTAyMTMxMDEzMTVaMIGOMQswCQYDVQQGEwJVUzELMAkGA1UECBMCQ0ExFjAUBgNVBAcTDU1vdW50YWluIFZpZXcxFDASBgNVBAoTC1BheVBhbCBJbmMuMRMwEQYDVQQLFApsaXZlX2NlcnRzMREwDwYDVQQDFAhsaXZlX2FwaTEcMBoGCSqGSIb3DQEJARYNcmVAcGF5cGFsLmNvbTCBnzANBgkqhkiG9w0BAQEFAAOBjQAwgYkCgYEAwUdO3fxEzEtcnI7ZKZL412XvZPugoni7i7D7prCe0AtaHTc97CYgm7NsAtJyxNLixmhLV8pyIEaiHXWAh8fPKW+R017+EmXrr9EaquPmsVvTywAAE1PMNOKqo2kl4Gxiz9zZqIajOm1fZGWcGS0f5JQ2kBqNbvbg2/Za+GJ/qwUCAwEAAaOB7jCB6zAdBgNVHQ4EFgQUlp98u8ZvF71ZP1LXChvsENZklGswgbsGA1UdIwSBszCBsIAUlp98u8ZvF71ZP1LXChvsENZklGuhgZSkgZEwgY4xCzAJBgNVBAYTAlVTMQswCQYDVQQIEwJDQTEWMBQGA1UEBxMNTW91bnRhaW4gVmlldzEUMBIGA1UEChMLUGF5UGFsIEluYy4xEzARBgNVBAsUCmxpdmVfY2VydHMxETAPBgNVBAMUCGxpdmVfYXBpMRwwGgYJKoZIhvcNAQkBFg1yZUBwYXlwYWwuY29tggEAMAwGA1UdEwQFMAMBAf8wDQYJKoZIhvcNAQEFBQADgYEAgV86VpqAWuXvX6Oro4qJ1tYVIT5DgWpE692Ag422H7yRIr/9j/iKG4Thia/Oflx4TdL+IFJBAyPK9v6zZNZtBgPBynXb048hsP16l2vi0k5Q2JKiPDsEfBhGI+HnxLXEaUWAcVfCsQFvd2A1sxRr67ip5y2wwBelUecP3AjJ+YcxggGaMIIBlgIBATCBlDCBjjELMAkGA1UEBhMCVVMxCzAJBgNVBAgTAkNBMRYwFAYDVQQHEw1Nb3VudGFpbiBWaWV3MRQwEgYDVQQKEwtQYXlQYWwgSW5jLjETMBEGA1UECxQKbGl2ZV9jZXJ0czERMA8GA1UEAxQIbGl2ZV9hcGkxHDAaBgkqhkiG9w0BCQEWDXJlQHBheXBhbC5jb20CAQAwCQYFKw4DAhoFAKBdMBgGCSqGSIb3DQEJAzELBgkqhkiG9w0BBwEwHAYJKoZIhvcNAQkFMQ8XDTE3MDUzMTA4MDMwOFowIwYJKoZIhvcNAQkEMRYEFIBq6Ih5vuSivaNEEevFnCpAlb2eMA0GCSqGSIb3DQEBAQUABIGARdt3ADD5RO3ujC+c/kSEYZCsQrCYPnPYtpN//j0i7BtsiBLl5/HtR/1k3PzHcYYrm1Q1IDaA2bwTQsBp/m+sNp43/wqDLRki4DHpZ6k5l371FjK1n7nBN0PXF1ssaBHMJ9RF8zR3+UPfGYFvRQV8YhxkA4BkMr9ZSgS9GgfxEdM=-----END PKCS7-----
+                    ">
+                    <input type="image" src="https://www.paypalobjects.com/zh_XC/C2/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal——最安全便捷的在线支付方式！">
+                    <img alt="" border="0" src="https://www.paypalobjects.com/zh_XC/i/scr/pixel.gif" width="1" height="1">
+                    </form>
+                </div>
                 <div class="home-title">
                     <span>{{title}}</span><span>•</span><span>私人影院</span>
                 </div><br/>
