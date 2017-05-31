@@ -7,8 +7,8 @@ var config = require('../config');
 /*
 
 */
-var itemModel = fs.readFileSync("./resource/HomeItemModel").toString();
-var adModel = fs.readFileSync("./resource/home_aditem").toString();
+var itemModel = fs.readFileSync(path.resolve(__dirname,"../resource/HomeItemModel")).toString();
+var adModel = fs.readFileSync(path.resolve(__dirname,"../resource/home_aditem")).toString();
 module.exports = function (index, req, res, next, callback) {
 
     var pool = mysql.createPool({
