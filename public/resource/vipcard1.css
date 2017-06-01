@@ -1,0 +1,265 @@
+/*通用部分*/
+html, body, div, span, applet, object, iframe, table, caption, 
+tbody, tfoot, thead, tr, th, td, del, dfn, em, font, img, ins, 
+kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, 
+h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, 
+acronym, address, big, cite, code, dl, dt, dd, ol, ul, li, 
+fieldset, form, label, legend { 
+vertical-align: baseline; 
+font-weight: inherit; 
+font-style: inherit; 
+font-size:100%;
+outline: 0; 
+padding: 0; 
+margin: 0; 
+border: 0; 
+} 
+body { font-family:"Microsoft YaHei"; background:url(../images/bg.jpg) repeat top left; margin:0; padding:0;}
+:focus { outline: 0; } 
+a{text-decoration:none;}
+ol, ul { list-style: none; } 
+h1, h2, h3, h4, h5, h6,b,i,cite,em,ins{font-style:normal; font-weight:normal;}
+table { border-collapse: separate; border-spacing: 0; } 
+
+blockquote:before, blockquote:after, q:before, q:after { content: ""; } 
+blockquote, q { quotes: "" ""; }
+.no-decoration{ text-decoration:none; text-transform:uppercase;}
+.clear{ clear:both;}
+.layout{width:1200px; height:100%; margin:0 auto;}
+.layout-950{width:950px; height:100%; margin:0 auto;}
+
+/*VIP充值*/
+.vipcard-box{width:100%;}
+.vipcard-box .vipcard-hd{width:100%;height:94px;background-color:#ff464e; text-align:center;}
+.vipcard-hd h1{ line-height:94px;font-size:30px;color:#fff; background:url(../images/v_tt_icon.png) no-repeat 300px center;}
+
+
+.vipcard-bd{
+	width: 800px;
+	margin-right: auto;
+	margin-left: auto;
+}
+.vipcard-bd .info{
+	text-align: center;
+	height: 50px;
+	line-height: 50px;
+	margin-right: auto;
+	margin-left: auto;
+	padding-right: 20px;
+	padding-left: 20px;
+	padding-bottom: 10px;
+	padding-top: 10px;
+	width: 300px;
+}
+
+.vipcard-bd ul{margin:0; padding:0; list-style:none;}
+.vipcard-bd ul li{
+}
+.vipcard-bd .listimgbox{
+	height: 176px;
+	position: relative;
+	background-color: #F86263;
+}
+.vipcard-bd .listsubt{width:224px; height:136px; position:absolute; right:0; top:0;text-align:center; padding-top:40px;}
+.vipcard-bd .listsubt em{font-size:24px;color:#fff;}
+.vipcard-bd .listsubt em strong{color:#fafc00;}
+.vipcard-bd .listinfos{
+	display: inline;
+	background: #fff;
+	line-height: 1;
+	text-align: center;
+	padding-top: 10px;
+	padding-bottom: 0px;
+	float: left;
+	width: 100%;
+}
+.vipcard-bd .nolmod-btn{display: inline-block;border-radius: 4px; text-align: center;border: 1px #DC0000 solid;color: #DC0000;font-size: 14px;}
+.vipcard-bd .getbtn{width: 158px;height: 38px; line-height: 38px;font-size: 16px;}
+.vipcard-bd .getbtn:hover{border-radius: 4px; text-align: center; background-color:#DC0000;border: 1px #DC0000 solid;color: #fff;}
+
+
+
+.vipcard-bt{ height:100%; background-color:#fbe5e5; padding:20px; line-height:30px;font-size:16px; margin:40px 0;}
+.vipcard-bt p{color:#c80000; }
+.vipcard-bt a{color:#272626; margin-right:148px;}
+.vipcard-bt a:hover{ text-decoration:underline;}
+.vipcard-bd ul{margin:0; padding:0; list-style:none;}
+.vipcard-bd ul li{
+	margin-top: 20px;
+	margin-right: auto;
+	margin-bottom: 20px;
+	margin-left: auto;
+}
+.vipcard-bd .listimgbox{ height:176px; position:relative;}
+.vipcard-bd .listsubt{
+	width: 224px;
+	height: 136px;
+	position: absolute;
+	right: 200px;
+	top: 0;
+	text-align: center;
+	padding-top: 40px;
+}
+.vipcard-bd .listsubt em{font-size:24px;color:#fff;}
+.vipcard-bd .listsubt em strong{color:#fafc00;}
+
+.vipcard-bd .nolmod-btn{display: inline-block;border-radius: 4px; text-align: center;border: 1px #DC0000 solid;color: #DC0000;font-size: 14px;}
+.vipcard-bd .getbtn{width: 158px;height: 38px; line-height: 38px;font-size: 16px;}
+.vipcard-bd .getbtn:hover{border-radius: 4px; text-align: center; background-color:#DC0000;border: 1px #DC0000 solid;color: #fff;}
+.vip ul li {
+	float: left;
+	width: 345px;
+	text-align: center;
+	margin: 5px;
+	height: 80px;
+	border: 1px solid #ddd;
+	position: relative;
+	overflow: hidden;
+	padding: 20px;
+	background-color: #FFF;
+	border-radius: 5px;
+}
+.vip ul li img {
+	height: 100px;
+	width: 100px;
+	float: left;
+}
+.title {
+	font-size: 14px;
+	height: 50px;
+	text-align: right;
+	border-bottom-width: 0px;
+	border-bottom-style: solid;
+	border-bottom-color: #ddd;
+	line-height: 50px;
+	margin-bottom: 10px;
+	margin-top: 10px;
+	color: #E20055;
+}
+.title h1 {
+	font-size: 24px;
+	font-weight: normal;
+	border-bottom-width: 2px;
+	border-bottom-style: solid;
+	border-bottom-color: #FF464E;
+	width: 100px;
+	float: left;
+	color: #333;
+}
+.vip ul li strong {
+	
+
+
+	font-weight: normal;
+	margin-right: 10px;
+
+	
+}
+.title h2 img {
+	float: left;
+	margin-top: 10px;
+	margin-right: 5px;
+}
+.title h2 {
+	float: right;
+	color: #FF464E;
+}
+.vip ul li .txt {
+	float: left;
+	margin-left: 20px;
+	line-height: 25px;
+	text-align: left;
+	width: 220px;
+}
+.info table tr td a img {
+	margin-top: 5px;
+	float: left;
+}
+.info h1 {
+	float: left;
+	color: #666666;
+	font-size: 14px;
+}
+.info a img {
+	float: left;
+	margin-top: 15px;
+}
+	/* 本例子css */
+		.slideTxtBox{
+	width: 800px;
+	border: 0px solid #ddd;
+	text-align: left;
+	margin-right: auto;
+	margin-left: auto;
+	margin-top: 20px;
+	height:252px
+}
+		.slideTxtBox .hd{
+	height: 50px;
+	line-height: 50px;
+	position: relative;
+	width: 600px;
+	padding-top: 0;
+	padding-bottom: 0;
+	margin-right: auto;
+	margin-left: auto;
+	border-bottom-width: 0px;
+	border-bottom-style: solid;
+	border-bottom-color: #ddd;
+}
+		.slideTxtBox .hd ul{ float:left;  position:absolute; left:20px; top:-1px; height:32px;   }
+		.slideTxtBox .hd ul li{
+	float: left;
+	cursor: pointer;
+	width: 120px;
+	padding-top: 0;
+	padding-bottom: 0;
+	text-align: center;
+	background-color: #FFF;
+	border: 1px solid #eee;
+	margin-right: 10px;
+	margin-left: 10px;
+}
+		.slideTxtBox .hd ul li.on{
+	border: 1px solid #FF464E;
+	background-color: #FF464E;
+	color: #FFF;
+}
+		.slideTxtBox .bd ul{
+	zoom: 1;
+}
+		.slideTxtBox .bd li{ height:24px; line-height:24px;   }
+		.slideTxtBox .bd li .date{ float:right; color:#999;  }
+.pay {
+	background-color: #FFF;
+	padding-top: 20px;
+	padding-right: 30px;
+	padding-left: 30px;
+	padding-bottom: 20px;
+	height: 120px;
+}
+.pay h1 {
+	font-size: 16px;
+	font-family: "微软雅黑";
+	float: left;
+	width: 120px;
+	line-height: 50px;
+}
+.pay h2 {
+	float: left;
+	width: 180px;
+	border: 1px solid #eee;
+	margin-right: 10px;
+}
+.pay_btn {
+	float: left;
+	margin-top: 20px;
+	margin-left: 5px;
+}
+.pay h3 {
+	font-size: 12px;
+	font-weight: normal;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	text-align: center;
+}

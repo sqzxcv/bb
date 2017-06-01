@@ -3,6 +3,7 @@ var users = require('./users');
 var videoPreview = require('./videoPreview');
 var login = require('./login');
 var successPay = require('./success');
+var middle = require("./middle");
 
 var mysql = require('mysql');
 var async = require("async");
@@ -54,23 +55,30 @@ module.exports = function (app) {
 
         });
     });
-    app.get('/logout',function (req, res, next) {
+    app.get('/logout', function (req, res, next) {
 
         //清除session，cookie
-		req.session.destroy(function(){
-			res.clearCookie("user",{});
-			res.cookie("isLogin","false");
-			res.redirect("/");
-		});
+        req.session.destroy(function () {
+            res.clearCookie("user", {});
+            res.cookie("isLogin", "false");
+            res.redirect("/");
+        });
     });
-    app.get('/islogin',function (req, res, next){
+    app.get('/islogin', function (req, res, next) {
 
         if (req.session.isLogin == true) {
 
-            res.send({status:200});
+            res.send({ status: 200 });
         } else {
             res.send();
         }
+    });
+    app.get('/middle', function (req, res, next) {
+
+        res.render("middle");
+        //middle(req, res, next, function (err) {
+
+        //});
     });
     app.get('/success/SFDsdfsdsddf34df5DS53FsdD898GDF0dfd123243', function (req, res, next) {
 
