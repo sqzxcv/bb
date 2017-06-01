@@ -19,10 +19,11 @@
         height: {{XXXHEIGHT_}}px;
         
 	}
-	.title {
+	.video_title {
 		text-align: center;
 		font-size:200%;
-		padding:40px; 
+		padding-top:40px;
+		padding-bottom:40px;
 	}
 	</style>
 
@@ -30,7 +31,7 @@
 
 {{#block ("body")}}
 	{{#block("header")}}
-		<div class="title">
+		<div class="video_title">
 		{{title}}
 		</div>
 	{{/block}}
