@@ -1,3 +1,43 @@
 <header>
-    <div class="logo"><a href="/">首页</a> • <a href="/login">登录</a></div>
+
+        <div class="header-inner">
+                <div class="container clearfix">
+                    <div class="wrap-logo">
+                        <div class="logo logo1">
+                            <div class="logo logo1"><a href="/"></a></div>
+                        </div>
+                    </div>
+                    <div class="panel">
+                            <div class="cap"></div>
+                            <div class="menu-btn sendwich" id="menu-btn">
+                                <span></span>
+                            </div>
+                            <div class="search-btn" id="search-btn">
+                                <span></span>
+                            </div>
+                            <div>
+                                {{{loginStatus}}}
+                            </div>
+                            <div class="panel-group ">
+                                <nav class="responsive-menu">
+                                    <ul>
+                                        <li class="{{home}}">
+                                            <a href="/">首页</a></li>
+                                    <!-- <li class="active">
+                                            <a href="/latest-updates/">所有影片</a></li>
+                                        <li>
+                                            <a href="/categories/">影片分类</a></li>-->
+                                        <li class="{{vip_page}}">
+                                            <a href="/viplatest-updates/">VIP专区</a></li>
+                                    </ul>
+                                </nav>
+                                <div class="search">
+                                    <form class="form1" action="http://www.99vv1.com/search/">
+                                        <input type="text" name="q" value="" placeholder="请输入搜索内容">
+                                        <input type="submit" value=""></form>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
 </header>

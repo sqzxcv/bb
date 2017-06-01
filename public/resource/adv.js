@@ -160,11 +160,11 @@ jQuery.fn.floatadv = function(loaded) {
 	  $(".kt-api-btn-start,.kt-api-btn-nostart").css("width","140px");
 	  $("#_iframe_content").find("img").css("height","140px").css('width','140px').css('padding-left','40px').css('padding-top','20px');
 	  $('body').css('background-color','');
-	  $.get("/islogin.php",function(data){
+	  $.get("/islogin",function(data){
 		 if(data){
-			 $(".wrap-logo").prepend('<div style="position:absolute;top:25px;right:-50px;font-size:16px;padding:5px;"><a href="/logout.php">登出</a></div> ');
+			 $(".wrap-logo").prepend('<div style="position:absolute;top:25px;right:-50px;font-size:16px;padding:5px;"><a href="/logout">登出</a></div> ');
 		 }else{
-			 $(".wrap-logo").prepend('<div style="position:absolute;top:25px;right:-50px;font-size:16px;padding:5px;"><a href="/login.php">登陆</a></div> ');
+			 $(".wrap-logo").prepend('<div style="position:absolute;top:25px;right:-50px;font-size:16px;padding:5px;"><a href="/login">登陆</a></div> ');
 		 }
 		 
 	  });

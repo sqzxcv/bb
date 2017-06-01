@@ -1,11 +1,4 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-}
 
-a {
-  color: #00B7FF;
-}
 
 .NeedHidden {
 
@@ -19,6 +12,7 @@ a {
 .subtitle {
   font-size: 150%;
   text-align: center;
+  padding:50px;
 }
 
 .email {

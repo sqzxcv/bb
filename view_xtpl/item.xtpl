@@ -1,6 +1,8 @@
 {{extend ("./layout/layout")}}
 
 {{#block ("head")}}
+	<link href="../resource/style.css" rel="stylesheet">
+
 	<style type="text/css">
 	.test{
 		height: 100%;
@@ -19,7 +21,8 @@
 	}
 	.title {
 		text-align: center;
-		font-size:200% 
+		font-size:200%;
+		padding:40px; 
 	}
 	</style>
 
