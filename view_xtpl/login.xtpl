@@ -38,14 +38,22 @@
 	<h1>登录和注册</h1>
 	<div class="w3layouts">
 		<div class="signin-agile">
-			<h2>登录</h2>
+			<div class="LoginForm">
+						<div class="FormTitle">
+							<p>登录</p>                
+						</div>
+						<div class="tipsInfo" id="tipsInfo">
+							<p>用户名或密码不正确,请重试</p>
+						</div>        
+			</div>
 			<input type="text" id="username" class="username" placeholder="用户名" required="">
 			<input type="password" id="password" class="password" placeholder="密码" required="">
-			<a href="/forgot">忘记密码?</a><br>
+			<a class="forgot_pwd" href="/forgot">忘记密码?</a><br>
 			<div class="clear"></div>
 			<input type="submit"  onclick="login();" value="登录">
 			<script type="text/javascript">
 					function login(){
+						$("#tipsInfo").css("color","rgba(255, 0, 0, 0)");
 					　　var username = $('#username').val();
 					　　var password = $('#password').val();
 					　　var data = { "username": username, "password":password};
@@ -61,7 +69,8 @@
 					　　　　},　　
 					　　　　error:function(data,status,e){
 					　　　　　　if(status == "error"){
-					　　　　　　　　location.href='login';
+					// 　　　　　　　　location.href='login';
+									$("#tipsInfo").css("color","red");
 					　　　　　　}
 					　　　　}
 					　　});
