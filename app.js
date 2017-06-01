@@ -5,7 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var bodyParser = require('body-parser');
-
+var expressValidator = require('express-validator');
 var routes = require("./routes/routes");
 
 
@@ -33,6 +33,7 @@ xtpl.__express = xtpl.renderFile;
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(expressValidator());
 app.use(cookieParser());
 app.use(session({
   secret: "weird sheep",

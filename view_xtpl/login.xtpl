@@ -8,10 +8,10 @@
 	<!--<link href='//fonts.googleapis.com/css?family=Open+Sans:400,300italic,300,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
 	<link href='//fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
 -->
-		<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 		
-		<meta name="keywords" content="Sign In And Sign Up Forms  Widget Responsive, Login Form Web Template, Flat Pricing Tables, Flat Drop-Downs, Sign-Up Web Templates, Flat Web Templates, Login Sign-up Responsive Web Template, Smartphone Compatible Web Template, Free Web Designs for Nokia, Samsung, LG, Sony Ericsson, Motorola Web Design">
-		<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+	<meta name="keywords" content="Sign In And Sign Up Forms  Widget Responsive, Login Form Web Template, Flat Pricing Tables, Flat Drop-Downs, Sign-Up Web Templates, Flat Web Templates, Login Sign-up Responsive Web Template, Smartphone Compatible Web Template, Free Web Designs for Nokia, Samsung, LG, Sony Ericsson, Motorola Web Design">
+	<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 
 	<script src="./resource/jquery.min.js"></script>
 <script src="./resource/jquery.magnific-popup.js" type="text/javascript"></script>
@@ -38,10 +38,9 @@
 	<h1>登录和注册</h1>
 	<div class="w3layouts">
 		<div class="signin-agile">
-			<h2>登录
-</h2>
+			<h2>登录</h2>
 			<form action="{{loginURL}}" method="post">
-				<input type="text" name="name" class="name" placeholder="用户名" required="">
+				<input type="text" name="username" class="username" placeholder="用户名" required="">
 				<input type="password" name="password" class="password" placeholder="密码" required="">
 				<ul>
 					<li>
@@ -53,6 +52,18 @@
 				<div class="clear"></div>
 				<input type="submit" value="登录">
 			</form>
+			<script type="text/javascript">
+				function login(){
+					var username = $('#username').val();
+					var password = $('#password').val()
+					var data = { "username": username,"password":password };
+					$.ajax({
+						url:'/login/',
+						type:'POST',
+						data:data
+					});
+				} 
+			</script>
 		</div>
 		<div class="signup-agileinfo">
 			<h3>表单设计很重要</h3>
