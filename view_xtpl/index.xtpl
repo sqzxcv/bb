@@ -106,11 +106,12 @@
                                             <a href="/viplatest-updates/">VIP专区</a></li>
                                     </ul>
                                 </nav>
+                                <!--搜索框-
                                 <div class="search">
                                     <form class="form1" action="http://www.99vv1.com/search/">
                                         <input type="text" name="q" value="" placeholder="请输入搜索内容">
                                         <input type="submit" value=""></form>
-                                </div>
+                                </div>-->
                             </div>
                     </div>
                 </div>

@@ -3,6 +3,7 @@ var async = require("async");
 var fs = require("fs");
 var path = require("path");
 var config = require('../config');
+var initHeader = require("../common/initHeader").initHeader;
 
 /*
 
@@ -88,7 +89,9 @@ module.exports = function (index, req, res, next, callback) {
                         "video_count": "展示" + results.length + "个视频",
                         "pageIndexs": pageIndexs,
                         "tdappid": config["tdappid"],
-                        "appversion": config["appversion"]
+                        "appversion": config["appversion"],
+                        "home":"active",
+                        "loginStatus":initHeader(req)
                     });
                 } else {
                     next();
@@ -112,7 +115,9 @@ module.exports = function (index, req, res, next, callback) {
                     "video_count": "没有更多",
                     "pageIndexs": pageIndexs,
                     "tdappid": config["tdappid"],
-                    "appversion": config["appversion"]
+                    "appversion": config["appversion"],
+                    "home":"active",
+                    "loginStatus":initHeader(req)
                 });
             }
             callback(err);

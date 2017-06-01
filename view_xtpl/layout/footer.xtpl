@@ -1,3 +1,7 @@
 <footer>
-    <div>Copyright </div>
+    <div class="footer-w3l">
+		<p class="agileinfo">爱吧 • 百万高清视频 • 实时在线 • 持续更新</p>
+		<p> love8video.com</p>
+		<p> 联系方式: love8video@gmail.com<p>
+	</div>
 </footer>

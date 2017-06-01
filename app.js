@@ -3,6 +3,7 @@ var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
+var session = require('express-session');
 var bodyParser = require('body-parser');
 
 var routes = require("./routes/routes");
@@ -33,6 +34,13 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(session({
+  secret: "weird sheep",
+  resave: false,
+  saveUninitialized: true,
+  cookie: {user:"default",maxAge: 2*24*60*60*1000}
+}));
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 routes(app);

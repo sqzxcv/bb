@@ -1,6 +1,7 @@
 var mysql = require('mysql');
 var async = require("async");
 var config = require('../config');
+var initHeader = require("../common/initHeader").initHeader;
 
 module.exports = function (index, req, res, next, callback) {
 
@@ -29,7 +30,8 @@ module.exports = function (index, req, res, next, callback) {
                     'XXXWIDTH_': results[0]['width'],
                     'XXXHEIGHT_': results[0]['height'],
                     "tdappid": config["tdappid"],
-                    "appversion": config["appversion"]
+                    "appversion": config["appversion"],
+                    "loginStatus":initHeader(req)
                 });
             } else {
                 next();
