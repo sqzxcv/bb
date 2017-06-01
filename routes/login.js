@@ -53,8 +53,7 @@ module.exports = function (req, res, next, callback) {
 
                 req.session.user = username;
                 req.session.user_id = results[0]['uid'];
-                res.redirect("/");
-                // res.send(200);
+                res.send(200);
             } else {
                 if (results.length > 1) {
 
