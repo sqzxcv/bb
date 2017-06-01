@@ -54,6 +54,24 @@ module.exports = function (app) {
 
         });
     });
+    app.get('/logout',function (req, res, next) {
+
+        //清除session，cookie
+		req.session.destroy(function(){
+			res.clearCookie("user",{});
+			res.cookie("isLogin","false");
+			res.redirect("/");
+		});
+    });
+    app.get('/islogin',function (req, res, next){
+
+        if (req.session.isLogin == true) {
+
+            res.send({status:200});
+        } else {
+            res.send();
+        }
+    });
     app.get('/success/SFDsdfsdsddf34df5DS53FsdD898GDF0dfd123243', function (req, res, next) {
 
         successPay(req, res, next, function (err) {

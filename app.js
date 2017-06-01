@@ -36,10 +36,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(expressValidator());
 app.use(cookieParser());
 app.use(session({
-  secret: "weird sheep",
+  secret: "weird sheepdfdfdf",
   resave: false,
   saveUninitialized: true,
-  cookie: {user:"default",maxAge: 2*24*60*60*1000}
+  cookie: {user:"default",maxAge: 1*24*60*60*1000}
 }));
 
 app.use(express.static(path.join(__dirname, 'public')));

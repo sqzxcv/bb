@@ -21,19 +21,6 @@ module.exports = function (req, res, next, callback) {
 
     var username = req.body.username;
     var pwd = req.body.password;
-    // var ip = req.ip;
-    // userbiz.checkUser(userid, pwd, ip, function (err, user) {
-    //     if (!!err) {
-    //         var json = { title: '管理后台-- 请先登录', error: err };
-    //         res.render('admin/login', json);
-    //     }
-    //     else {
-    //         req.session.user_id = user.user_id;
-    //         req.session.user = user;
-    //         res.redirect("/admin/index");
-    //     }
-
-    // });
 
     var pool = mysql.createPool({
         host: config['dbhost'],
@@ -53,6 +40,8 @@ module.exports = function (req, res, next, callback) {
 
                 req.session.user = username;
                 req.session.user_id = results[0]['uid'];
+                req.session.expirestime = results[0]['expirestime'];
+                req.session.isLogin = true;
                 res.send(200);
             } else {
                 if (results.length > 1) {
