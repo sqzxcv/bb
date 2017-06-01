@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <!-- saved from url=(0044)http://www.sucaihuo.com/jquery/19/1944/demo/ -->
-<html class=" js csstransforms csstransforms3d csstransitions"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html class=" js csstransforms csstransforms3d csstransitions">
+	<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>响应式登录和注册界面表单html5代码</title>
 	<link rel="stylesheet" href="./resource/login-style.css">
 	<link href="./resource/popup-box.css" rel="stylesheet" type="text/css" media="all">

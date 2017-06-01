@@ -25,7 +25,12 @@ module.exports = function (index, req, res, next, callback) {
     var videoCountPage = 30;
     pool.getConnection(function (err, connection) {
 
-
+        if (err || connection == undefined) {
+            
+            console.error("链接数据库失败:" + err.message);
+            next();
+            return;
+        }
         connection.query("select * from videos order by videoid desc limit " + videoCountPage * index + ", " + videoCountPage + ";", function (err, results, fields) {
 
             if (results.length != 0) {
