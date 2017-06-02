@@ -43,8 +43,9 @@ app.use(session({
 }));
 
 app.use(express.static(path.join(__dirname, 'public')));
-
+app.use("/categories",express.static(path.join(__dirname, 'public')));
 routes(app);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

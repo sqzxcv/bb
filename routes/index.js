@@ -21,6 +21,30 @@ module.exports = function (index, tagname, req, res, next, callback) {
         port: "3306",
         waitForConnections: false
     });
+    var activeTab = "home";
+    var tagLocalName = ""
+    switch (tagname) {
+        case "": activeTab = "home";
+            break;
+        case "latest-updates": activeTab = "all";tagLocalName = "所有视频";
+            break;
+        case "最新视频": activeTab = "new"; tagLocalName = tagname;
+            break;
+        case "categories": activeTab = "categories";tagLocalName = "视频分类";
+            break;
+        case "viplatest-updates": activeTab = "vip_page"; tagLocalName="VIP专区";
+            break;
+        case "高清": activeTab = "hd_video"; tagLocalName = "高清视频";
+            break;
+        case "日本无码": activeTab = "wuma"; tagLocalName="日本无码";
+            break;
+        case "中文字幕": activeTab = "china_word"; tagLocalName = tagname;
+            break;
+        case "国产自拍": activeTab = "zipai";tagLocalName = tagname;
+            break;
+        default:
+            activeTab = "";
+    }
 
     // var self = this;
     var videoCountPage = 30;
@@ -34,6 +58,8 @@ module.exports = function (index, tagname, req, res, next, callback) {
         }
         var sqlstr = "";
         var sqlPageCountStr = "";
+
+        if (tagname == "最新视频" || tagname == "latest-updates") tagname = "";
         if (tagname.length != 0) {
             sqlPageCountStr = "select count(*) as count from videos where videoid in (select videoid from tagmap where tagname='" + tagname + "')";
             sqlstr = "select * from videos where videoid in (select videoid from tagmap where tagname='" + tagname + "') order by videoid desc limit " + videoCountPage * index + ", " + videoCountPage + ";"
@@ -48,20 +74,20 @@ module.exports = function (index, tagname, req, res, next, callback) {
             if (!err) {
 
                 var video_count = results[0].count;
-                var page_count = (video_count%videoCountPage)== 0? parseInt(video_count/videoCountPage) : parseInt(video_count/videoCountPage) + 1
+                var page_count = (video_count % videoCountPage) == 0 ? parseInt(video_count / videoCountPage) : parseInt(video_count / videoCountPage) + 1
                 pageIndexs = initPageIndex(index, tagname, page_count);
             } else {
                 console.error(err.message);
                 if (index == 0) {
-                    pageIndexs = "<a href=\"/" + encodeTagName + 0 + "/\" class=\"btn\" title=\"Page 02\">上一页</a>";
+                    pageIndexs = "<a href=\"/" + encodeTagName + 0 + "\" class=\"btn\" title=\"Page 02\">上一页</a>";
 
                 } else {
-                    pageIndexs = "<a href=\"/" + encodeTagName + (index - 1) + "/\" class=\"btn\" title=\"Page 02\">上一页</a>";
+                    pageIndexs = "<a href=\"/" + encodeTagName + (index - 1) + "\" class=\"btn\" title=\"Page 02\">上一页</a>";
                 }
-                pageIndexs += "<span> • </span>";
+                pageIndexs += "";
                 pageIndexs += "<span class='btn active'>" + (index + 1) + "</span>";
-                pageIndexs += "<span> • </span>";
-                pageIndexs += "<a href=\"/" + encodeTagName + (index + 1) + "/\" class=\"btn\" title=\"Page 02\">下一页</a>";
+                pageIndexs += "";
+                pageIndexs += "<a href=\"/" + encodeTagName + (index + 1) + "\" class=\"btn\" title=\"Page 02\">下一页</a>";
 
             }
 
@@ -69,30 +95,6 @@ module.exports = function (index, tagname, req, res, next, callback) {
             connection.query(sqlstr, function (err, results, fields) {
 
                 connection.release();
-                var activeTab = "home";
-                switch (tagname) {
-                    case "": activeTab = "home";
-                        break;
-                    case "all": activeTab = "all";
-                        break;
-                    case "最新视频": activeTab = "new";
-                        break;
-                    case "categories": activeTab = "categories";
-                        break;
-                    case "viplatest-updates": activeTab = "vip_page";
-                        break;
-                    case "高清": activeTab = "hd_video";
-                        break;
-                    case "日本无码": activeTab = "wuma";
-                        break;
-                    case "中文字幕": activeTab = "china_word";
-                        break;
-                    case "国产自拍": activeTab = "zipai";
-                        break;
-                    default:
-                        activeTab = "";
-                }
-
                 var headerContent = initHeader(req);
                 headerContent = headerContent.replace(eval("/{{" + activeTab + "}}/"), "active");
                 if (results.length != 0) {
@@ -135,7 +137,7 @@ module.exports = function (index, tagname, req, res, next, callback) {
 
                         res.render('index', {
                             "VIDEOITEM": node,
-                            "title": "爱吧",
+                            "title": " 爱吧" + tagLocalName,
                             "video_count": "展示" + results.length + "个视频",
                             "pageIndexs": pageIndexs,
                             "tdappid": config["tdappid"],
@@ -149,7 +151,7 @@ module.exports = function (index, tagname, req, res, next, callback) {
                     // next();
                     res.render('index', {
                         "VIDEOITEM": "",
-                        "title": "爱吧",
+                        "title": " 爱吧" + tagLocalName,
                         "video_count": "没有更多",
                         "pageIndexs": pageIndexs,
                         "tdappid": config["tdappid"],
@@ -168,7 +170,7 @@ function initPageIndex(currentIndex, tagname, page_count) {
     var pageIndexs = "";
     var encodeTagName = ""
     if (tagname.length != 0) {
-        encodeTagName = encodeURI(tagname) + "/";
+        encodeTagName ="categories/" + encodeURI(tagname) + "/";
     }
 
     if (page_count <= 9) {
@@ -179,10 +181,10 @@ function initPageIndex(currentIndex, tagname, page_count) {
 
                 pageIndexs += "<span class='btn active'>" + (i + 1) + "</span>";
             } else {
-                pageIndexs += "<a href=\"/" + encodeTagName + i + "/\" class=\"btn\" title=\"Page 02\">" + (i + 1) + "</a>";
+                pageIndexs += "<a href=\"/" + encodeTagName + i + "\" class=\"btn\" title=\"Page " + (i + 1) + "\">" + (i + 1) + "</a>";
 
             }
-            pageIndexs += "<span> • </span>";
+            pageIndexs += "";
 
         }
     } else {
@@ -194,52 +196,52 @@ function initPageIndex(currentIndex, tagname, page_count) {
 
                     pageIndexs += "<span class='btn active'>" + (i + 1) + "</span>";
                 } else {
-                    pageIndexs += "<a href=\"/" + encodeTagName + i + "/\" class=\"btn\" title=\"Page 02\">" + (i + 1) + "</a>";
+                    pageIndexs += "<a href=\"/" + encodeTagName + i + "\" class=\"btn\" title=\"Page " + (i + 1) + "\">" + (i + 1) + "</a>";
 
                 }
-                pageIndexs += "<span> • </span>";
+                pageIndexs += "";
 
             }
-            pageIndexs += "<a href=\"/" + encodeTagName + currentIndex + 4 + "/\" class=\"btn\" title=\"Page 02\"> ... </a>";
-            pageIndexs += "<span> • </span>";
-            pageIndexs += "<a href=\"/" + encodeTagName + page_count + "/\" class=\"btn\" title=\"Page 02\">" + (page_count) + "</a>";
+            pageIndexs += "<a href=\"/" + encodeTagName + 9 + "\" class=\"btn\" title=\"Page " + 10 + "\"> ... </a>";
+            pageIndexs += "";
+            pageIndexs += "<a href=\"/" + encodeTagName + (page_count - 1) + "\" class=\"btn\" title=\"Page " + (page_count) + "\">" + (page_count) + "</a>";
 
         } else if (currentIndex > (page_count - 4)) {
 
-            pageIndexs += "<a href=\"/" + encodeTagName + 0 + "/\" class=\"btn\" title=\"Page 02\">" + 1 + "</a>";
-            pageIndexs += "<span> • </span>";
-            pageIndexs += "<a href=\"/" + encodeTagName + (currentIndex - 4) + "/\" class=\"btn\" title=\"Page 02\"> ... </a>";
+            pageIndexs += "<a href=\"/" + encodeTagName + 0 + "\" class=\"btn\" title=\"Page " + 1 + "\">" + 1 + "</a>";
+            pageIndexs += "";
+            pageIndexs += "<a href=\"/" + encodeTagName + (currentIndex - 4) + "\" class=\"btn\" title=\"Page " + (currentIndex - 3) + "\"> ... </a>";
             for (var i = (page_count - 9); i < page_count; i++) {
 
-                pageIndexs += "<span> • </span>";
+                pageIndexs += "";
                 if (i == currentIndex) {
 
                     pageIndexs += "<span class='btn active'>" + (i + 1) + "</span>";
                 } else {
-                    pageIndexs += "<a href=\"/" + encodeTagName + i + "/\" class=\"btn\" title=\"Page 02\">" + (i + 1) + "</a>";
+                    pageIndexs += "<a href=\"/" + encodeTagName + i + "\" class=\"btn\" title=\"Page " + (i + 1) + "\">" + (i + 1) + "</a>";
 
                 }
             }
 
         } else {
 
-            pageIndexs += "<a href=\"/" + encodeTagName + 0 + "/\" class=\"btn\" title=\"Page 02\">" + 1 + "</a>";
-            pageIndexs += "<span> • </span>";
-            pageIndexs += "<a href=\"/" + encodeTagName + (currentIndex - 4) + "/\" class=\"btn\" title=\"Page 02\"> ... </a>";
-            pageIndexs += "<span> • </span>";
-            for (var i = currentIndex - 3; i < currentIndex + 3; i++) {
+            pageIndexs += "<a href=\"/" + encodeTagName + 0 + "\" class=\"btn\" title=\"Page " + (1) + "\">" + 1 + "</a>";
+            pageIndexs += "";
+            pageIndexs += "<a href=\"/" + encodeTagName + (currentIndex - 4) + "\" class=\"btn\" title=\"Page " + (currentIndex - 3) + "\"> ... </a>";
+            pageIndexs += "";
+            for (var i = currentIndex - 3; i < currentIndex + 4; i++) {
                 if (i == currentIndex) {
 
                     pageIndexs += "<span class='btn active'>" + (i + 1) + "</span>";
                 } else {
-                    pageIndexs += "<a href=\"/" + encodeTagName + i + "/\" class=\"btn\" title=\"Page 02\">" + (i + 1) + "</a>";
+                    pageIndexs += "<a href=\"/" + encodeTagName + i + "\" class=\"btn\" title=\"Page " + (i + 1) + "\">" + (i + 1) + "</a>";
 
                 }
-                pageIndexs += "<span> • </span>";
+                pageIndexs += "";
             }
-            pageIndexs += "<a href=\"/" + encodeTagName + (currentIndex + 4) + "/\" class=\"btn\" title=\"Page 02\"> ... </a>";
-            pageIndexs += "<span> • </span>";
-            pageIndexs += "<a href=\"/" + encodeTagName + page_count + "/\" class=\"btn\" title=\"Page 02\">" + (page_count) + "</a>";
+            pageIndexs += "<a href=\"/" + encodeTagName + (currentIndex + 4) + "\" class=\"btn\" title=\"Page "+(currentIndex + 5) +"\"> ... </a>";
+            pageIndexs += "";
+            pageIndexs += "<a href=\"/" + encodeTagName + (page_count - 1) + "\" class=\"btn\" title=\"Page " + page_count + "\">" + (page_count) + "</a>";
         }
     }
     return pageIndexs;
