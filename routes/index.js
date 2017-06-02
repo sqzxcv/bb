@@ -33,125 +33,214 @@ module.exports = function (index, tagname, req, res, next, callback) {
             return;
         }
         var sqlstr = "";
+        var sqlPageCountStr = "";
         if (tagname.length != 0) {
-
+            sqlPageCountStr = "select count(*) as count from videos where videoid in (select videoid from tagmap where tagname='" + tagname + "')";
             sqlstr = "select * from videos where videoid in (select videoid from tagmap where tagname='" + tagname + "') order by videoid desc limit " + videoCountPage * index + ", " + videoCountPage + ";"
         } else {
+            sqlPageCountStr = "select count(*) as count from videos";
             sqlstr = "select * from videos order by videoid desc limit " + videoCountPage * index + ", " + videoCountPage + ";";
         }
-        connection.query(sqlstr, function (err, results, fields) {
+        // 初始化页码
+        connection.query(sqlPageCountStr, function (err, results, fields) {
 
-            connection.release();
-            var activeTab = "home";
-            switch (tagname) {
-                case "": activeTab = "home";
-                    break;
-                case "all": activeTab = "all";
-                    break;
-                case "最新视频": activeTab = "new";
-                    break;
-                case "categories": activeTab = "categories";
-                    break;
-                case "viplatest-updates": activeTab = "vip_page";
-                    break;
-                case "高清": activeTab = "hd_video";
-                    break;
-                case "日本无码": activeTab = "wuma";
-                    break;
-                case "中文字幕": activeTab = "china_word";
-                    break;
-                case "国产自拍": activeTab = "zipai";
-                    break;
-                default:
-                    activeTab = "";
+            var pageIndexs = "";
+            if (!err) {
+
+                var video_count = results[0].count;
+                var page_count = (video_count%videoCountPage)== 0? parseInt(video_count/videoCountPage) : parseInt(video_count/videoCountPage) + 1
+                pageIndexs = initPageIndex(index, tagname, page_count);
+            } else {
+                console.error(err.message);
+                if (index == 0) {
+                    pageIndexs = "<a href=\"/" + encodeTagName + 0 + "/\" class=\"btn\" title=\"Page 02\">上一页</a>";
+
+                } else {
+                    pageIndexs = "<a href=\"/" + encodeTagName + (index - 1) + "/\" class=\"btn\" title=\"Page 02\">上一页</a>";
+                }
+                pageIndexs += "<span> • </span>";
+                pageIndexs += "<span class='btn active'>" + (index + 1) + "</span>";
+                pageIndexs += "<span> • </span>";
+                pageIndexs += "<a href=\"/" + encodeTagName + (index + 1) + "/\" class=\"btn\" title=\"Page 02\">下一页</a>";
+
             }
-            var headerContent = initHeader(req);
-            headerContent = headerContent.replace(eval("/{{"+activeTab+"}}/"),"active");
-            if (results.length != 0) {
 
-                var rootUrl = "http://www.99vv1.com/";
-                var item;
-                if (itemModel != null) {
+            //初始化视频内容
+            connection.query(sqlstr, function (err, results, fields) {
 
-                    var node, rate;
-                    for (var i = 0; i < results.length; i++) {
-                        if (results[i]['v_like'] + results[i]['v_unlike'] != 0) {
+                connection.release();
+                var activeTab = "home";
+                switch (tagname) {
+                    case "": activeTab = "home";
+                        break;
+                    case "all": activeTab = "all";
+                        break;
+                    case "最新视频": activeTab = "new";
+                        break;
+                    case "categories": activeTab = "categories";
+                        break;
+                    case "viplatest-updates": activeTab = "vip_page";
+                        break;
+                    case "高清": activeTab = "hd_video";
+                        break;
+                    case "日本无码": activeTab = "wuma";
+                        break;
+                    case "中文字幕": activeTab = "china_word";
+                        break;
+                    case "国产自拍": activeTab = "zipai";
+                        break;
+                    default:
+                        activeTab = "";
+                }
 
-                            rate = results[i]['v_like'] / (results[i]['v_like'] + results[i]['v_unlike']);
-                            rate = Number(rate).toFixed(2);
-                        } else {
+                var headerContent = initHeader(req);
+                headerContent = headerContent.replace(eval("/{{" + activeTab + "}}/"), "active");
+                if (results.length != 0) {
 
-                            rate = 0;
+                    var rootUrl = "http://www.99vv1.com/";
+                    var item;
+                    if (itemModel != null) {
+
+                        var node, rate;
+                        for (var i = 0; i < results.length; i++) {
+                            if (results[i]['v_like'] + results[i]['v_unlike'] != 0) {
+
+                                rate = results[i]['v_like'] / (results[i]['v_like'] + results[i]['v_unlike']);
+                                rate = Number(rate).toFixed(2);
+                            } else {
+
+                                rate = 0;
+                            }
+                            item = itemModel.replace(/{{detail}}/g, "/detail/" + results[i]['video_index'])
+                                .replace(/{{thumbnail}}/g, results[i]['thumbnail'])
+                                //.replace(/{{thumbnail}}/g,"./Oshine_files/preview3-650x385.jpg")
+                                .replace(/{{title}}/g, results[i]['title'])
+                                .replace(/{{view_count}}/g, results[i]['view_count'])
+                                .replace(/{{rate}}/g, Number(rate * 100).toString() + "%")
+                                .replace(/{{duration}}/g, Number((results[i]['duration'] / 1000) / 60).toFixed(0).toString() + ":" + Number((results[i]['duration'] / 1000) % 60).toString())
+                                .replace(/{{thumbnails}}/g, path.dirname(results[i]['thumbnail']) + "/");
+
+                            if (i == 0) {
+                                node = item;
+                            } else {
+                                node += "\n" + item;
+                            }
+
+                            if (i != 0 && i % (Math.floor(Math.random() * 3)) == 0) {
+
+                                item = adModel.replace(/{{content}}/, "<script src='http://js.taobaogj.com/vs.php?id=724'></script>");
+                                node += "\n" + item;
+                            }
                         }
-                        item = itemModel.replace(/{{detail}}/g, "/detail/" + results[i]['video_index'])
-                            .replace(/{{thumbnail}}/g, results[i]['thumbnail'])
-                            //.replace(/{{thumbnail}}/g,"./Oshine_files/preview3-650x385.jpg")
-                            .replace(/{{title}}/g, results[i]['title'])
-                            .replace(/{{view_count}}/g, results[i]['view_count'])
-                            .replace(/{{rate}}/g, Number(rate * 100).toString() + "%")
-                            .replace(/{{duration}}/g, Number((results[i]['duration'] / 1000) / 60).toFixed(0).toString() + ":" + Number((results[i]['duration'] / 1000) % 60).toString())
-                            .replace(/{{thumbnails}}/g, path.dirname(results[i]['thumbnail']) + "/");
 
-                        if (i == 0) {
-                            node = item;
-                        } else {
-                            node += "\n" + item;
-                        }
-
-                        if (i != 0 && i % (Math.floor(Math.random() * 3)) == 0) {
-
-                            item = adModel.replace(/{{content}}/, "<script src='http://js.taobaogj.com/vs.php?id=724'></script>");
-                            node += "\n" + item;
-                        }
-                    }
-
-                    var pageIndexs = "";
-                    if (index == 0) {
-                        pageIndexs = "<a href=\"/" + 0 + "/\" class=\"btn\" title=\"Page 02\">上一页</a>";
-
+                        res.render('index', {
+                            "VIDEOITEM": node,
+                            "title": "爱吧",
+                            "video_count": "展示" + results.length + "个视频",
+                            "pageIndexs": pageIndexs,
+                            "tdappid": config["tdappid"],
+                            "appversion": config["appversion"],
+                            "header": headerContent
+                        });
                     } else {
-                        pageIndexs = "<a href=\"/" + (index - 1) + "/\" class=\"btn\" title=\"Page 02\">上一页</a>";
+                        next();
                     }
-                    pageIndexs += "<span> • </span>";
-                    pageIndexs += "<span class='btn active'>" + (index + 1) + "</span>";
-                    pageIndexs += "<span> • </span>";
-                    pageIndexs += "<a href=\"/" + (index + 1) + "/\" class=\"btn\" title=\"Page 02\">下一页</a>";
+                } else {
+                    // next();
                     res.render('index', {
-                        "VIDEOITEM": node,
+                        "VIDEOITEM": "",
                         "title": "爱吧",
-                        "video_count": "展示" + results.length + "个视频",
+                        "video_count": "没有更多",
                         "pageIndexs": pageIndexs,
                         "tdappid": config["tdappid"],
                         "appversion": config["appversion"],
                         "header": headerContent
                     });
-                } else {
-                    next();
                 }
-            } else {
-                // next();
-                var pageIndexs;
-                if (index == 0) {
-                    pageIndexs = "<a href=\"/" + 0 + "/\" class=\"btn\" title=\"Page 02\">上一页</a>";
-
-                } else {
-                    pageIndexs = "<a href=\"/" + (index - 1) + "/\" class=\"btn\" title=\"Page 02\">上一页</a>";
-                }
-                pageIndexs += "<span> • </span>";
-                pageIndexs += "<span class='btn active'>" + (index + 1) + "</span>";
-                pageIndexs += "<span> • </span>";
-                pageIndexs += "<a href=\"/" + (index + 1) + "/\" class=\"btn\" title=\"Page 02\">下一页</a>";
-                res.render('index', {
-                    "VIDEOITEM": "",
-                    "title": "爱吧",
-                    "video_count": "没有更多",
-                    "pageIndexs": pageIndexs,
-                    "tdappid": config["tdappid"],
-                    "appversion": config["appversion"],
-                    "header": headerContent
-                });
-            }
-            callback(err);
+                callback(err);
+            });
         });
     });
 };
+
+function initPageIndex(currentIndex, tagname, page_count) {
+
+    var pageIndexs = "";
+    var encodeTagName = ""
+    if (tagname.length != 0) {
+        encodeTagName = encodeURI(tagname) + "/";
+    }
+
+    if (page_count <= 9) {
+
+        for (var i = 0; i < page_count; i++) {
+
+            if (i == currentIndex) {
+
+                pageIndexs += "<span class='btn active'>" + (i + 1) + "</span>";
+            } else {
+                pageIndexs += "<a href=\"/" + encodeTagName + i + "/\" class=\"btn\" title=\"Page 02\">" + (i + 1) + "</a>";
+
+            }
+            pageIndexs += "<span> • </span>";
+
+        }
+    } else {
+
+        if (currentIndex < 4) {
+            for (var i = 0; i < 9; i++) {
+
+                if (i == currentIndex) {
+
+                    pageIndexs += "<span class='btn active'>" + (i + 1) + "</span>";
+                } else {
+                    pageIndexs += "<a href=\"/" + encodeTagName + i + "/\" class=\"btn\" title=\"Page 02\">" + (i + 1) + "</a>";
+
+                }
+                pageIndexs += "<span> • </span>";
+
+            }
+            pageIndexs += "<a href=\"/" + encodeTagName + currentIndex + 4 + "/\" class=\"btn\" title=\"Page 02\"> ... </a>";
+            pageIndexs += "<span> • </span>";
+            pageIndexs += "<a href=\"/" + encodeTagName + page_count + "/\" class=\"btn\" title=\"Page 02\">" + (page_count) + "</a>";
+
+        } else if (currentIndex > (page_count - 4)) {
+
+            pageIndexs += "<a href=\"/" + encodeTagName + 0 + "/\" class=\"btn\" title=\"Page 02\">" + 1 + "</a>";
+            pageIndexs += "<span> • </span>";
+            pageIndexs += "<a href=\"/" + encodeTagName + (currentIndex - 4) + "/\" class=\"btn\" title=\"Page 02\"> ... </a>";
+            for (var i = (page_count - 9); i < page_count; i++) {
+
+                pageIndexs += "<span> • </span>";
+                if (i == currentIndex) {
+
+                    pageIndexs += "<span class='btn active'>" + (i + 1) + "</span>";
+                } else {
+                    pageIndexs += "<a href=\"/" + encodeTagName + i + "/\" class=\"btn\" title=\"Page 02\">" + (i + 1) + "</a>";
+
+                }
+            }
+
+        } else {
+
+            pageIndexs += "<a href=\"/" + encodeTagName + 0 + "/\" class=\"btn\" title=\"Page 02\">" + 1 + "</a>";
+            pageIndexs += "<span> • </span>";
+            pageIndexs += "<a href=\"/" + encodeTagName + (currentIndex - 4) + "/\" class=\"btn\" title=\"Page 02\"> ... </a>";
+            pageIndexs += "<span> • </span>";
+            for (var i = currentIndex - 3; i < currentIndex + 3; i++) {
+                if (i == currentIndex) {
+
+                    pageIndexs += "<span class='btn active'>" + (i + 1) + "</span>";
+                } else {
+                    pageIndexs += "<a href=\"/" + encodeTagName + i + "/\" class=\"btn\" title=\"Page 02\">" + (i + 1) + "</a>";
+
+                }
+                pageIndexs += "<span> • </span>";
+            }
+            pageIndexs += "<a href=\"/" + encodeTagName + (currentIndex + 4) + "/\" class=\"btn\" title=\"Page 02\"> ... </a>";
+            pageIndexs += "<span> • </span>";
+            pageIndexs += "<a href=\"/" + encodeTagName + page_count + "/\" class=\"btn\" title=\"Page 02\">" + (page_count) + "</a>";
+        }
+    }
+    return pageIndexs;
+}

@@ -11,26 +11,12 @@ var async = require("async");
 
 module.exports = function (app) {
 
-    // app.use('/:id', videoPreview);
-    // app.use('/', index);
-    // app.use('/users', users);
-
     /* GET home page. */
     app.get('/', function (req, res, next) {
         //res.render('index', { title: '首页' });
         // next();
         if (req.url == "/") {
             index(0, "", req, res, next, function (err) { });
-        } else {
-            next();
-        }
-    });
-    app.get('/:id(\d+)', function (req, res, next) {
-        //res.render('index', { title: '首页' });
-        // next();
-        var pageIndex = parseInt(req.params.id, 10);;
-        if (pageIndex >= 0) {
-            index(pageIndex, "", req, res, next, function (err) { });
         } else {
             next();
         }
@@ -42,9 +28,9 @@ module.exports = function (app) {
             // goto categories
             next();
         } else {
-            
+
             var tagname = decodeURI(arr[2]);
-            var pageIndex = arr.length==4 ? parseInt(arr[3]) : 0;
+            var pageIndex = arr.length == 4 ? parseInt(arr[3]) : 0;
             index(pageIndex, tagname, req, res, next, function (err) { });
         }
     });
@@ -98,5 +84,15 @@ module.exports = function (app) {
         successPay(req, res, next, function (err) {
 
         });
+    });
+    app.get('/:id', function (req, res, next) {
+        //res.render('index', { title: '首页' });
+        // next();
+        var pageIndex = parseInt(req.params.id, 10);;
+        if (pageIndex >= 0) {
+            index(pageIndex, "", req, res, next, function (err) { });
+        } else {
+            next();
+        }
     });
 };
