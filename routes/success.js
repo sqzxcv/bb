@@ -37,25 +37,28 @@ module.exports = function (req, res, next, callback) {
 
                 if (results.length != 0) {
 
-                    usernameFun(len ++);
+                    genUsername(len++, usernameCallback);
                 } else {
                     usernameCallback(username);
                 }
             });
         }
 
-        genUsername(6,function(username){
-            
-            var expirestime = moment().add(1,'months').unix();
-            var pwd = randomString(6);
-            connection.query("insert into user(username,pwd,expirestime) values(?,?,?)",[username,pwd,expirestime],function (err, results, fields){
+        genUsername(6, function (username) {
 
-                res.render("success", {
-                    "title":"Welcome,VIP username and password",
-                    "username":username,
-                    "password":pwd,
-                    "expire":moment.unix(expirestime).format('MMMM Do YYYY, h:mm:ss a')
-                });
+            var expirestime = moment().add(1, 'months').unix();
+            var pwd = randomString(6);
+            connection.query("insert into user(username,pwd,expirestime) values(?,?,?)", [username, pwd, expirestime], function (err, results, fields) {
+
+                connection.release();
+                if (err == null) {
+                    res.render("success", {
+                        "title": "Welcome,VIP username and password",
+                        "username": username,
+                        "password": pwd,
+                        "expire": moment.unix(expirestime).format('MMMM Do YYYY, h:mm:ss a')
+                    });
+                }
             });
         });
     });

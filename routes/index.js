@@ -8,10 +8,10 @@ var initHeader = require("../common/initHeader").initHeader;
 /*
 
 */
-var itemModel = fs.readFileSync(path.resolve(__dirname,"../resource/HomeItemModel")).toString();
-var adModel = fs.readFileSync(path.resolve(__dirname,"../resource/home_aditem")).toString();
-module.exports = function (index, req, res, next, callback) {
+module.exports = function (index, tagname, req, res, next, callback) {
 
+    var itemModel = fs.readFileSync(path.resolve(__dirname, "../resource/HomeItemModel")).toString();
+    var adModel = fs.readFileSync(path.resolve(__dirname, "../resource/home_aditem")).toString();
     var pool = mysql.createPool({
         host: config['dbhost'],
         user: config['dbuser'],
@@ -27,13 +27,46 @@ module.exports = function (index, req, res, next, callback) {
     pool.getConnection(function (err, connection) {
 
         if (err || connection == undefined) {
-            
+
             console.error("链接数据库失败:" + err.message);
             next();
             return;
         }
-        connection.query("select * from videos order by videoid desc limit " + videoCountPage * index + ", " + videoCountPage + ";", function (err, results, fields) {
+        var sqlstr = "";
+        if (tagname.length != 0) {
 
+            sqlstr = "select * from videos where videoid in (select videoid from tagmap where tagname='" + tagname + "') order by videoid desc limit " + videoCountPage * index + ", " + videoCountPage + ";"
+        } else {
+            sqlstr = "select * from videos order by videoid desc limit " + videoCountPage * index + ", " + videoCountPage + ";";
+        }
+        connection.query(sqlstr, function (err, results, fields) {
+
+            connection.release();
+            var activeTab = "home";
+            switch (tagname) {
+                case "": activeTab = "home";
+                    break;
+                case "all": activeTab = "all";
+                    break;
+                case "最新视频": activeTab = "new";
+                    break;
+                case "categories": activeTab = "categories";
+                    break;
+                case "viplatest-updates": activeTab = "vip_page";
+                    break;
+                case "高清": activeTab = "hd_video";
+                    break;
+                case "日本无码": activeTab = "wuma";
+                    break;
+                case "中文字幕": activeTab = "china_word";
+                    break;
+                case "国产自拍": activeTab = "zipai";
+                    break;
+                default:
+                    activeTab = "";
+            }
+            var headerContent = initHeader(req);
+            headerContent = headerContent.replace(eval("/{{"+activeTab+"}}/"),"active");
             if (results.length != 0) {
 
                 var rootUrl = "http://www.99vv1.com/";
@@ -64,11 +97,11 @@ module.exports = function (index, req, res, next, callback) {
                         } else {
                             node += "\n" + item;
                         }
-                        
-                        if (i !=0 && i%(Math.floor(Math.random() * 3)) == 0) {
 
-                            item = adModel.replace(/{{content}}/,"<script src='http://js.taobaogj.com/vs.php?id=724'></script>");
-                            node +="\n" + item;
+                        if (i != 0 && i % (Math.floor(Math.random() * 3)) == 0) {
+
+                            item = adModel.replace(/{{content}}/, "<script src='http://js.taobaogj.com/vs.php?id=724'></script>");
+                            node += "\n" + item;
                         }
                     }
 
@@ -90,8 +123,7 @@ module.exports = function (index, req, res, next, callback) {
                         "pageIndexs": pageIndexs,
                         "tdappid": config["tdappid"],
                         "appversion": config["appversion"],
-                        "home":"active",
-                        "loginStatus":initHeader(req)
+                        "header": headerContent
                     });
                 } else {
                     next();
@@ -116,8 +148,7 @@ module.exports = function (index, req, res, next, callback) {
                     "pageIndexs": pageIndexs,
                     "tdappid": config["tdappid"],
                     "appversion": config["appversion"],
-                    "home":"active",
-                    "loginStatus":initHeader(req)
+                    "header": headerContent
                 });
             }
             callback(err);

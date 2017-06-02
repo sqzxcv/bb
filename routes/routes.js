@@ -20,7 +20,7 @@ module.exports = function (app) {
         //res.render('index', { title: '首页' });
         // next();
         if (req.url == "/") {
-            index(0, req, res, next, function (err) { });
+            index(0, "", req, res, next, function (err) { });
         } else {
             next();
         }
@@ -30,9 +30,22 @@ module.exports = function (app) {
         // next();
         var pageIndex = parseInt(req.params.id, 10);;
         if (pageIndex >= 0) {
-            index(pageIndex, req, res, next, function (err) { });
+            index(pageIndex, "", req, res, next, function (err) { });
         } else {
             next();
+        }
+    });
+    app.get('/categories/*', function (req, res, next) {
+
+        var arr = (req.url.toString()).split('/');
+        if (arr.length == 2) {
+            // goto categories
+            next();
+        } else {
+            
+            var tagname = decodeURI(arr[2]);
+            var pageIndex = arr.length==4 ? parseInt(arr[3]) : 0;
+            index(pageIndex, tagname, req, res, next, function (err) { });
         }
     });
 

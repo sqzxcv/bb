@@ -20,6 +20,7 @@ module.exports = function (index, req, res, next, callback) {
 
         connection.query("select * from videos where video_index=?", [index], function (err, results, fields) {
 
+            connection.release();
             if (results.length != 0) {
 
                 var rootUrl = "http://www.99vv1.com/";
@@ -31,7 +32,7 @@ module.exports = function (index, req, res, next, callback) {
                     'XXXHEIGHT_': results[0]['height'],
                     "tdappid": config["tdappid"],
                     "appversion": config["appversion"],
-                    "loginStatus":initHeader(req)
+                    "header":initHeader(req)
                 });
             } else {
                 next();
