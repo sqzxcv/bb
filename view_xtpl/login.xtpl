@@ -16,7 +16,40 @@
 	<script src="./resource/jquery.min.js"></script>
 <script src="./resource/jquery.magnific-popup.js" type="text/javascript"></script>
 <script type="text/javascript" src="./resource/modernizr.custom.53451.js"></script> 
-		
+<style type="text/css">
+
+@-webkit-keyframes twinkling{	/*透明度由0到1*/
+	0%{
+		opacity:0;				/*透明度为0*/
+	}
+	100%{
+		opacity:1;				/*透明度为1*/
+	}
+} 
+.wechattitle{
+	-webkit-animation: twinkling 1s infinite ease-in-out;
+}
+	.wechat-code {
+
+		background-color: white;
+		width: 180px;
+		height: 220px;
+		display: block;
+
+		position: absolute;
+		right: 0px;
+		bottom: 10px;
+	}
+</style>
+<script language="javascript">
+	function relocate() {
+		var mydiv = document.getElementById("myDiv");
+		var height = Math.abs(document.body.clientHeight + document.body.scrollTop - 180);
+		window.status = document.body.clientHeight + " " + document.body.scrollTop;
+		mydiv.style.top = height;
+	}
+
+</script>
 </head>
 <body>
 	<h1>登录和注册</h1>
@@ -88,6 +121,14 @@
 				<input type="submit" value="立即注册">
 			</form>
 	</div>
-</div>	
+</div>
+<script language="javascript">
+	window.onscroll = relocate;
+	window.onresize = relocate;
 
+</script>
+<div id="myDiv" class="wechat-code">
+<img src="./images/code.jpeg" alt="微信二维码">
+<div class="wechattitle" style="text-align:center;margin-top:-15px;color:#e91e63">微信客户</div><div class="wechattitle" style="text-align:center;color:#e91e63;">扫码获取 VIP 账户</div>
+</div>
 </body></html>
