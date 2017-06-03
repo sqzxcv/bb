@@ -65,7 +65,7 @@ module.exports = function (app) {
 
         var headerContent = initHeader(req).replace(/{{categories}}/, "active");
         res.render('categories', {
-            "title": "• 爱吧 • 影片分类",
+            "title": "• 爱吧视频 • 影片分类",
             "tdappid": config["tdappid"],
             "appversion": config["appversion"],
             "header": headerContent

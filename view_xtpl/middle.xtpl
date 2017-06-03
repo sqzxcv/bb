@@ -46,7 +46,7 @@ $(function(){
 <div class="vipcard-box">
     	<div class="vipcard-hd" style="position:relative">
     	<span style="position: absolute;left:90px;top:30px;font-size:30px;">
-    	<a style="color:white;" href="http://love8video.com/" target="_blank">返回 爱吧</a>
+    	<a style="color:white;" href="http://love8video.com/" target="_blank">返回 爱吧视频</a>
     	</span>
     	<h1 class="layout">VIP充值</h1>
     	</div>

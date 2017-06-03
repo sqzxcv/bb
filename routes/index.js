@@ -137,7 +137,7 @@ module.exports = function (index, tagname, req, res, next, callback) {
 
                         res.render('index', {
                             "VIDEOITEM": node,
-                            "title": " 爱吧" + tagLocalName,
+                            "title": " 爱吧视频" + tagLocalName,
                             "video_count": "展示" + results.length + "个视频",
                             "pageIndexs": pageIndexs,
                             "tdappid": config["tdappid"],
@@ -151,7 +151,7 @@ module.exports = function (index, tagname, req, res, next, callback) {
                     // next();
                     res.render('index', {
                         "VIDEOITEM": "",
-                        "title": " 爱吧" + tagLocalName,
+                        "title": " 爱吧视频" + tagLocalName,
                         "video_count": "没有更多",
                         "pageIndexs": pageIndexs,
                         "tdappid": config["tdappid"],
