@@ -43,7 +43,7 @@
         </div>
         <header>
             <div class="home-title">
-                <span>{{title}}</span><span>•</span><span>私人影院</span>
+                <span>{{title}}</span><span>•</span><span> 私人影院</span>
             </div>
             {{{header}}}
 
