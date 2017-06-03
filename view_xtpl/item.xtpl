@@ -1,3 +1,4 @@
+{{{alert}}}
 {{extend ("./layout/layout")}}
 
 {{#block ("head")}}

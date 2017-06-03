@@ -23,6 +23,10 @@ module.exports = function (index, req, res, next, callback) {
             connection.release();
             if (results.length != 0) {
 
+                var script = "";
+                if (!req.session.user_id && results[0]["videoid"] > 2500) {
+                    script = "<script>alert('请登陆后观看')</script><script>document.location='/login'</script>";
+                }
                 var rootUrl = "http://www.99vv1.com/";
                 res.render('item', {
                     "title": results[0]['title'],
@@ -32,7 +36,8 @@ module.exports = function (index, req, res, next, callback) {
                     'XXXHEIGHT_': results[0]['height'],
                     "tdappid": config["tdappid"],
                     "appversion": config["appversion"],
-                    "header":initHeader(req)
+                    "header": initHeader(req),
+                    "alert":script
                 });
             } else {
                 next();

@@ -26,21 +26,21 @@ module.exports = function (index, tagname, req, res, next, callback) {
     switch (tagname) {
         case "": activeTab = "home";
             break;
-        case "latest-updates": activeTab = "all";tagLocalName = "所有视频";
+        case "latest-updates": activeTab = "all"; tagLocalName = "所有视频";
             break;
         case "最新视频": activeTab = "new"; tagLocalName = tagname;
             break;
-        case "categories": activeTab = "categories";tagLocalName = "视频分类";
+        case "categories": activeTab = "categories"; tagLocalName = "视频分类";
             break;
-        case "viplatest-updates": activeTab = "vip_page"; tagLocalName="VIP专区";
+        case "viplatest-updates": activeTab = "vip_page"; tagLocalName = "VIP专区";
             break;
         case "高清": activeTab = "hd_video"; tagLocalName = "高清视频";
             break;
-        case "日本无码": activeTab = "wuma"; tagLocalName="日本无码";
+        case "日本无码": activeTab = "wuma"; tagLocalName = "日本无码";
             break;
         case "中文字幕": activeTab = "china_word"; tagLocalName = tagname;
             break;
-        case "国产自拍": activeTab = "zipai";tagLocalName = tagname;
+        case "国产自拍": activeTab = "zipai"; tagLocalName = tagname;
             break;
         default:
             activeTab = "";
@@ -65,7 +65,12 @@ module.exports = function (index, tagname, req, res, next, callback) {
             sqlstr = "select * from videos where videoid in (select videoid from tagmap where tagname='" + tagname + "') order by videoid desc limit " + videoCountPage * index + ", " + videoCountPage + ";"
         } else {
             sqlPageCountStr = "select count(*) as count from videos";
-            sqlstr = "select * from videos order by videoid desc limit " + videoCountPage * index + ", " + videoCountPage + ";";
+
+            if (req.session.user_id) {
+                sqlstr = "select * from videos order by videoid desc limit " + videoCountPage * index + ", " + videoCountPage + ";";
+            } else {
+                sqlstr = "select * from videos order by videoid ASC limit " + videoCountPage * index + ", " + videoCountPage + ";";
+            }
         }
         // 初始化页码
         connection.query(sqlPageCountStr, function (err, results, fields) {
@@ -135,6 +140,10 @@ module.exports = function (index, tagname, req, res, next, callback) {
                             }
                         }
 
+                        var script = "";
+                        if (!req.session.user_id && tagLocalName== "最新视频") {
+                            script = "<script>alert('请登陆后观看')</script><script>document.location='/login'</script>";
+                        }
                         res.render('index', {
                             "VIDEOITEM": node,
                             "title": "love8 • 爱吧视频 " + tagLocalName,
@@ -142,7 +151,8 @@ module.exports = function (index, tagname, req, res, next, callback) {
                             "pageIndexs": pageIndexs,
                             "tdappid": config["tdappid"],
                             "appversion": config["appversion"],
-                            "header": headerContent
+                            "header": headerContent,
+                            "alert":script
                         });
                     } else {
                         next();
@@ -170,7 +180,7 @@ function initPageIndex(currentIndex, tagname, page_count) {
     var pageIndexs = "";
     var encodeTagName = ""
     if (tagname.length != 0) {
-        encodeTagName ="categories/" + encodeURI(tagname) + "/";
+        encodeTagName = "categories/" + encodeURI(tagname) + "/";
     }
 
     if (page_count <= 9) {
@@ -239,7 +249,7 @@ function initPageIndex(currentIndex, tagname, page_count) {
                 }
                 pageIndexs += "";
             }
-            pageIndexs += "<a href=\"/" + encodeTagName + (currentIndex + 4) + "\" class=\"btn\" title=\"Page "+(currentIndex + 5) +"\"> ... </a>";
+            pageIndexs += "<a href=\"/" + encodeTagName + (currentIndex + 4) + "\" class=\"btn\" title=\"Page " + (currentIndex + 5) + "\"> ... </a>";
             pageIndexs += "";
             pageIndexs += "<a href=\"/" + encodeTagName + (page_count - 1) + "\" class=\"btn\" title=\"Page " + page_count + "\">" + (page_count) + "</a>";
         }
