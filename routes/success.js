@@ -22,7 +22,7 @@ module.exports = function (req, res, next, callback) {
         user: config['dbuser'],
         password: config['dbpwd'],
         database: "BB",
-        connectionLimit: 10,
+        connectionLimit: 100,
         port: "3306",
         waitForConnections: false
     });
