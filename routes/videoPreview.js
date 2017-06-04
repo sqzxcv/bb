@@ -34,6 +34,7 @@ module.exports = function (index, req, res, next, callback) {
                     '_XXXPREVIEW_ADDR_': "http://" + results[0]['preview_url'],
                     'XXXWIDTH_': results[0]['width'],
                     'XXXHEIGHT_': results[0]['height'],
+                    "FrameXXXHEIGHT_": results[0]['height'] + 100,
                     "tdappid": config["tdappid"],
                     "appversion": config["appversion"],
                     "header": initHeader(req),

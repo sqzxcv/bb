@@ -16,8 +16,8 @@
 		overflow: hidden;
 		scrolling:no;
 		border: 0px;
-        width: {{XXXWIDTH_}}px; 
-        height: {{XXXHEIGHT_}}px;
+        width: 100%; 
+        height: {{FrameXXXHEIGHT_}}px;
         
 	}
 	.video_title {
@@ -37,6 +37,6 @@
 		</div>
 	{{/block}}
 	<center>
-		<iframe class="frameclass" src="data:text/html;charset=utf-8,&lt;div class=&quot;test&quot; style=&quot; object-fit:cover&quot;&gt;&lt;video id=&quot;kt_player_internal&quot; preload=&quot;auto&quot; src=&quot;{{_XXXXXRESOURCE_ADDRESS_}}&quot; poster=&quot;{{_XXXPREVIEW_ADDR_}}&quot; controls=&quot;&quot; style=&quot;width: {{XXXWIDTH_}}px; height: {{XXXHEIGHT_}}px;&quot;&gt;&lt;/video&gt;&lt;/div&gt;"></iframe>
+		<iframe class="frameclass" src="data:text/html;charset=utf-8,&lt;html&gt;&lt;head&gt;&lt;link rel=&quot;stylesheet&quot; href=&quot;http://cdn.staticfile.org/plyr/2.0.12/plyr.css&quot;&gt;&lt;/head&gt;&lt;body&gt;&lt;center&gt;&lt;div class=&quot;test&quot; style=&quot; object-fit:cover;&quot;&gt;&lt;video id=&quot;kt_player_internal&quot; preload=&quot;auto&quot; src=&quot;{{_XXXXXRESOURCE_ADDRESS_}}&quot; poster=&quot;{{_XXXPREVIEW_ADDR_}}&quot; controls&gt;&lt;/video&gt;&lt;/div&gt;&lt;/center&gt;&lt;script src=&quot;http://cdn.staticfile.org/plyr/2.0.12/plyr.js&quot;&gt;&lt;/script&gt;&lt;script&gt;plyr.setup();&lt;/script&gt; &lt;/body&gt;&lt;/html&gt;"></iframe>
 	</center>
 {{/block}}
