@@ -22,5 +22,8 @@
     "serve-favicon": "~2.4.2",
     "xtemplate": "^4.6.0",
     "xtpl": "^3.3.0"
+  },
+  "devDependencies": {
+    "video.js": "^5.19.2"
   }
 }
