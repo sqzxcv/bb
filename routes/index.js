@@ -66,7 +66,8 @@ module.exports = function (index, tagname, req, res, next, callback) {
         } else {
             sqlPageCountStr = "select count(*) as count from videos";
 
-            if (req.session.user_id) {
+            if(true) {
+            // if (req.session.user_id) {
                 sqlstr = "select * from videos order by videoid desc limit " + videoCountPage * index + ", " + videoCountPage + ";";
             } else {
                 sqlstr = "select * from videos order by videoid ASC limit " + videoCountPage * index + ", " + videoCountPage + ";";
@@ -133,15 +134,17 @@ module.exports = function (index, tagname, req, res, next, callback) {
                                 node += "\n" + item;
                             }
 
-                            if (i != 0 && i % (Math.floor(Math.random() * 3)) == 0) {
+                            if (!req.session.user_id) {
+                                if (i != 0 && i % (Math.floor(Math.random() * 3)) == 0) {
 
-                                item = adModel.replace(/{{content}}/, "<script src='http://js.taobaogj.com/vs.php?id=724'></script>");
-                                node += "\n" + item;
+                                    item = adModel.replace(/{{content}}/, "<script src='http://js.taobaogj.com/vs.php?id=724'></script>");
+                                    node += "\n" + item;
+                                }
                             }
                         }
 
                         var script = "";
-                        if (!req.session.user_id && tagLocalName== "最新视频") {
+                        if (!req.session.user_id && tagLocalName == "最新视频") {
                             script = "<script>alert('请登陆后观看.如果没有账号,请添加微信 ruchujian88或者发送邮件到 love8video@gmail.com 领取 VIP 账号.Please log in. If there is no account, please add wechat ruchujian88 or send an email to love8video@gmail.com to receive VIP account.')</script><script>document.location='/login'</script>";
                         }
                         res.render('index', {
@@ -152,7 +155,7 @@ module.exports = function (index, tagname, req, res, next, callback) {
                             "tdappid": config["tdappid"],
                             "appversion": config["appversion"],
                             "header": headerContent,
-                            "alert":script
+                            "alert": script
                         });
                     } else {
                         next();
