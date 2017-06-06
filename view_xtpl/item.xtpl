@@ -3,7 +3,6 @@
 
 {{#block ("head")}}
 	<link href="../resource/style.css" rel="stylesheet">
-	<link href="../resource/detail.css" rel="stylesheet">
 
 	<style type="text/css">
 	.test{

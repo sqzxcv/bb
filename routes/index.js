@@ -10,7 +10,6 @@ var initHeader = require("../common/initHeader").initHeader;
 */
 module.exports = function (index, tagname, req, res, next, callback) {
 
-    
     var itemModel = fs.readFileSync(path.resolve(__dirname, "../resource/HomeItemModel")).toString();
     var adModel = fs.readFileSync(path.resolve(__dirname, "../resource/home_aditem")).toString();
     var pool = mysql.createPool({

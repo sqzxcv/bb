@@ -4,8 +4,6 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
-var redis = require('redis');
-var redisStore = require('connect-redis')(session);
 var bodyParser = require('body-parser');
 var expressValidator = require('express-validator');
 var routes = require("./routes/routes");
@@ -37,12 +35,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(expressValidator());
 app.use(cookieParser());
-//var redisClient = redis.createClient(6379, '127.0.0.1', {auth_pass: 'password'});
 app.use(session({
   secret: "weird sheepdfdfdf",
   resave: false,
   saveUninitialized: true,
-  // store: new redisStore({client:redisClient}),
   cookie: {user:"default",maxAge: 1*24*60*60*1000}
 }));
 
