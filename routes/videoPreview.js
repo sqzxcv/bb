@@ -1,10 +1,14 @@
 var mysql = require('mysql');
 var async = require("async");
 var config = require('../config');
-var initHeader = require("../common/initHeader").initHeader;
+var initHeader = require("../common/initHeader").initHeader,
+    checkNeedShowInvitedView = require("../common/initHeader").checkNeedShowInvitedView;
 
 module.exports = function (index, req, res, next, callback) {
 
+    // if (checkNeedShowInvitedView(req)) {
+
+    // }
     var pool = mysql.createPool({
         host: config['dbhost'],
         user: config['dbuser'],
@@ -38,7 +42,8 @@ module.exports = function (index, req, res, next, callback) {
                     "tdappid": config["tdappid"],
                     "appversion": config["appversion"],
                     "header": initHeader(req),
-                    "alert":script
+                    "alert":script,
+                    "showInvitView":"block"
                 });
             } else {
                 next();
