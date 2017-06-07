@@ -2,20 +2,9 @@ var mysql = require('mysql');
 var async = require("async");
 var config = require('../config');
 var moment = require('moment');
+var randomString = require('../common/common').randomString;
 
 module.exports = function (req, res, next, callback) {
-
-
-    function randomString(len) {
-        len = len || 32;
-        var $chars = 'abcdefhijkmnprstwxyz';    /****默认去掉了容易混淆的字符oOLl,9gq,Vv,Uu,I1****/
-        var maxPos = $chars.length;
-        var pwd = '';
-        for (i = 0; i < len; i++) {
-            pwd += $chars.charAt(Math.floor(Math.random() * maxPos));
-        }
-        return pwd;
-    }
 
     var pool = mysql.createPool({
         host: config['dbhost'],

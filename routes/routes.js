@@ -4,6 +4,7 @@ var videoPreview = require('./videoPreview');
 var login = require('./login');
 var successPay = require('./success');
 var middle = require("./middle");
+var addInvitedCount = require("./invite");
 
 var mysql = require('mysql');
 var async = require("async");
@@ -14,6 +15,22 @@ var path = require('path');
 
 module.exports = function (app) {
 
+    app.get("*", function (req, res, next) {
+
+        var Cookies = {};
+        req.headers.cookie && req.headers.cookie.split(';').forEach(function (Cookie) {
+            var parts = Cookie.split('=');
+            Cookies[parts[0].trim()] = (parts[1] || '').trim();
+        });
+        if (parseInt(Cookies["visitcount"]) > 0) {
+
+            res.cookie('visitcount', parseInt(Cookies["visitcount"]) + 1, {maxAge:800000, httpOnly:true, path:'/', secure:false});
+
+        } else {
+            res.cookie('visitcount', '1', {maxAge:800000, httpOnly:true, path:'/', secure:false});
+        }
+        next();
+    });
     /* GET home page. */
     app.get('/', function (req, res, next) {
         //res.render('index', { title: '首页' });
@@ -45,7 +62,7 @@ module.exports = function (app) {
                     if (false == isNaN(pageIndex)) {
                         needCatch = true;
                     }
-                    if (arr[3].length==0) {
+                    if (arr[3].length == 0) {
                         needCatch = true;
                         pageIndex = 0;
                     }
@@ -142,6 +159,22 @@ module.exports = function (app) {
             index(pageIndex, "", req, res, next, function (err) { });
         } else {
             next();
+        }
+    });
+    app.get("/inviteby/:id", function (req, res, next) {
+
+        var invitLink = req.params.id;
+        if (invitLink) {
+            var Cookies = {};
+            req.headers.cookie && req.headers.cookie.split(';').forEach(function (Cookie) {
+                var parts = Cookie.split('=');
+                Cookies[parts[0].trim()] = (parts[1] || '').trim();
+            });
+            if (Cookies["visitcount"] == undefined) {
+
+                addInvitedCount(invitLink, req, res, next, function () { });
+            }
+            res.redirect("/");
         }
     });
 };

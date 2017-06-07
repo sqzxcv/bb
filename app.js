@@ -37,13 +37,13 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(expressValidator());
 app.use(cookieParser());
-//var redisClient = redis.createClient(6379, '127.0.0.1', {auth_pass: 'password'});
+var redisClient = redis.createClient(6379, '127.0.0.1', {auth_pass: 'password'});
 app.use(session({
   secret: "weird sheepdfdfdf",
   resave: false,
   saveUninitialized: true,
-  // store: new redisStore({client:redisClient}),
-  cookie: {user:"default",maxAge: 1*24*60*60*1000}
+  store: new redisStore({client:redisClient}),
+  cookie: {user:"default",maxAge: 1*1*1*60*1000}
 }));
 
 app.use(express.static(path.join(__dirname, 'public')));
