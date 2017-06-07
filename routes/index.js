@@ -134,14 +134,6 @@ module.exports = function (index, tagname, req, res, next, callback) {
                             } else {
                                 node += "\n" + item;
                             }
-
-                            if (!req.session.user_id) {
-                                if (i != 0 && i % (Math.floor(Math.random() * 3)) == 0) {
-
-                                    item = adModel.replace(/{{content}}/, "<script src='http://js.taobaogj.com/vs.php?id=724'></script>");
-                                    node += "\n" + item;
-                                }
-                            }
                         }
 
                         var script = "";
