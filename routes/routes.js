@@ -17,17 +17,12 @@ module.exports = function (app) {
 
     app.get("*", function (req, res, next) {
 
-        var Cookies = {};
-        req.headers.cookie && req.headers.cookie.split(';').forEach(function (Cookie) {
-            var parts = Cookie.split('=');
-            Cookies[parts[0].trim()] = (parts[1] || '').trim();
-        });
-        if (parseInt(Cookies["visitcount"]) > 0) {
+        if (parseInt(req.cookies.visitcount) > 0) {
 
-            res.cookie('visitcount', parseInt(Cookies["visitcount"]) + 1, {maxAge:800000, httpOnly:true, path:'/', secure:false});
+            res.cookie('visitcount', parseInt(req.cookies.visitcount) + 1, {maxAge:10*365*24*60*60*1000, httpOnly:true, path:'/', secure:false});
 
         } else {
-            res.cookie('visitcount', '1', {maxAge:800000, httpOnly:true, path:'/', secure:false});
+            res.cookie('visitcount', '1', {maxAge:10*365*24*60*60*1000, httpOnly:true, path:'/', secure:false});
         }
         next();
     });
@@ -165,12 +160,7 @@ module.exports = function (app) {
 
         var invitLink = req.params.id;
         if (invitLink) {
-            var Cookies = {};
-            req.headers.cookie && req.headers.cookie.split(';').forEach(function (Cookie) {
-                var parts = Cookie.split('=');
-                Cookies[parts[0].trim()] = (parts[1] || '').trim();
-            });
-            if (Cookies["visitcount"] == undefined) {
+            if (req.cookies.visitcount == undefined) {
 
                 addInvitedCount(invitLink, req, res, next, function () { });
             }

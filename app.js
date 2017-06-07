@@ -43,7 +43,7 @@ app.use(session({
   resave: false,
   saveUninitialized: true,
   store: new redisStore({client:redisClient}),
-  cookie: {user:"default",maxAge: 1*1*1*60*1000}
+  cookie: {user:"default",maxAge: 1*24*60*60*1000}
 }));
 
 app.use(express.static(path.join(__dirname, 'public')));

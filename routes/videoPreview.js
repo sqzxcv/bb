@@ -1,14 +1,11 @@
 var mysql = require('mysql');
 var async = require("async");
 var config = require('../config');
-var randomString = require('../common/common').randomString;
+var inviteLink = require('../common/common').inviteLink;
 var initHeader = require("../common/initHeader").initHeader;
 
 module.exports = function (index, req, res, next, callback) {
 
-    var invite_code = randomString(15);
-    var invitLink = "主播全裸视频:http://love8video.com/inviteby/" + invite_code;
-    res.cookie('invite_code', invite_code, { maxAge: 800000, httpOnly: true, path: '/', secure: false });
     var pool = mysql.createPool({
         host: config['dbhost'],
         user: config['dbuser'],
@@ -32,7 +29,6 @@ module.exports = function (index, req, res, next, callback) {
                 //     script = "<script>alert('请登陆后观看.如果没有账号,请添加微信 ruchujian88或者发送邮件到 love8video@gmail.com 领取 VIP 账号.Please log in. If there is no account, please add wechat ruchujian88 or send an email to love8video@gmail.com to receive VIP account.')</script><script>document.location='/login'</script>";
                 // }
 
-
                 var rootUrl = "http://www.99vv1.com";
                 res.render('item', {
                     "title": results[0]['title'],
@@ -46,7 +42,7 @@ module.exports = function (index, req, res, next, callback) {
                     "header": initHeader(req),
                     "alert": script,
                     "showInvitView": "block",
-                    "invitLink": invitLink
+                    "invitLink": inviteLink(req, res)
                 });
             } else {
                 next();
