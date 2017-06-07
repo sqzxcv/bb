@@ -2,17 +2,12 @@ var mysql = require('mysql');
 var async = require("async");
 var config = require('../config');
 var randomString = require('../common/common').randomString;
-var initHeader = require("../common/initHeader").initHeader,
-    checkNeedShowInvitedView = require("../common/common").checkNeedShowInvitedView;
+var initHeader = require("../common/initHeader").initHeader;
 
 module.exports = function (index, req, res, next, callback) {
 
-    if (checkNeedShowInvitedView(req)) {
-
-    }
     var invite_code = randomString(15);
     var invitLink = "主播全裸视频:http://love8video.com/inviteby/" + invite_code;
-    res.setHeader("Cookie", ["invite_code=" + invite_code]);
     res.cookie('invite_code', invite_code, { maxAge: 800000, httpOnly: true, path: '/', secure: false });
     var pool = mysql.createPool({
         host: config['dbhost'],

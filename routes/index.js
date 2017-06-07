@@ -4,13 +4,14 @@ var fs = require("fs");
 var path = require("path");
 var config = require('../config');
 var initHeader = require("../common/initHeader").initHeader;
+var randomString = require('../common/common').randomString;
 
 /*
 
 */
 module.exports = function (index, tagname, req, res, next, callback) {
 
-    
+
     var itemModel = fs.readFileSync(path.resolve(__dirname, "../resource/HomeItemModel")).toString();
     var adModel = fs.readFileSync(path.resolve(__dirname, "../resource/home_aditem")).toString();
     var pool = mysql.createPool({
@@ -67,8 +68,8 @@ module.exports = function (index, tagname, req, res, next, callback) {
         } else {
             sqlPageCountStr = "select count(*) as count from videos";
 
-            if(true) {
-            // if (req.session.user_id) {
+            if (true) {
+                // if (req.session.user_id) {
                 sqlstr = "select * from videos order by videoid desc limit " + videoCountPage * index + ", " + videoCountPage + ";";
             } else {
                 sqlstr = "select * from videos order by videoid ASC limit " + videoCountPage * index + ", " + videoCountPage + ";";
@@ -140,6 +141,10 @@ module.exports = function (index, tagname, req, res, next, callback) {
                         if (!req.session.user_id && tagLocalName == "最新视频") {
                             script = "<script>alert('请登陆后观看.如果没有账号,请添加微信 ruchujian88或者发送邮件到 love8video@gmail.com 领取 VIP 账号.Please log in. If there is no account, please add wechat ruchujian88 or send an email to love8video@gmail.com to receive VIP account.')</script><script>document.location='/login'</script>";
                         }
+
+                        var invite_code = randomString(15);
+                        var invitLink = "主播全裸视频:http://love8video.com/inviteby/" + invite_code;
+                        res.cookie('invite_code', invite_code, { maxAge: 800000, httpOnly: true, path: '/', secure: false });
                         res.render('index', {
                             "VIDEOITEM": node,
                             "title": "love8 • 爱吧视频 " + tagLocalName,
@@ -148,7 +153,9 @@ module.exports = function (index, tagname, req, res, next, callback) {
                             "tdappid": config["tdappid"],
                             "appversion": config["appversion"],
                             "header": headerContent,
-                            "alert": script
+                            "alert": script,
+                            "showInvitView": "block",
+                            "invitLink": invitLink
                         });
                     } else {
                         next();

@@ -18,6 +18,10 @@
     <link href="../resource/style.css" rel="stylesheet">
     <link href="../resource/adv.css" rel="stylesheet">
     <link href="../stylesheets/style.css" rel="stylesheet">
+    <link href="../stylesheets/common.css" rel="stylesheet">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../javascript/common.js"></script>
+    <script type="text/javascript" src="https://cdn.staticfile.org/clipboard.js/1.6.1/clipboard.min.js"></script>
     <!-- <script async="" src="../resource/analytics.js"></script> -->
     <script language="javascript">
         if (screen.width < 1600) {
@@ -38,6 +42,45 @@
 </head>
 
 <body>
+    <div class="invitContainer display:{{showInvitView}}" id="invitContainer">
+    <div class="invitView">
+        <div class="invitLink">邀请好友5个人以上,即可免费赠送一个月 VIP 账号<br/>邀请链接:{{invitLink}}</div>
+            <input type="button" id="copy" class="copy" placeholder="copy" required="" value="复制链接" data-clipboard-text="{{invitLink}}">
+            <input type="button" id="close" class="close" placeholder="copy" required="" value="关闭" onclick="closeInvitView()">
+        </div>
+    </div>
+    <script language="javascript">
+            $.fn.smartFloat = function () {
+            var position = function (element) {
+                var top = element.position().top, pos = element.css("position");
+                $(window).scroll(function () {
+                    var scrolls = $(this).scrollTop();
+                    if (scrolls > top) {
+                        if (window.XMLHttpRequest) {
+                            element.css({
+                                position: "fixed",
+                                top: 0
+                            });
+                        } else {
+                            element.css({
+                                top: scrolls
+                            });
+                        }
+                    } else {
+                        element.css({
+                            position: "absolute",
+                            top: top
+                        });
+                    }
+                });
+            };
+            return $(this).each(function () {
+                position($(this));
+            });
+        };
+        $("#invitContainer").smartFloat();
+    </script>
+    <div class="alert"></div>
     <div class="wrapper">
         <div class="wrap-head-spots">
             <div class="container"></div>
