@@ -1,0 +1,21 @@
+.videoinfo-panel a {
+  border: 2px solid #fff;
+  padding: 8px 34px;
+  margin-top: 0px;
+  color: #fff;
+  background: rgba(233, 30, 99, 0.9);
+  display: inline-block;
+  border-radius: 20px;
+  transition: 0.5s all;
+  -webkit-transition: 0.5s all;
+  -moz-transition: 0.5s all;
+  -o-transition: 0.5s all;
+  -ms-transition: 0.5s all;
+  outline: none;
+}
+
+.videoinfo-panel a:hover {
+  border: 1px solid #0c1558;
+  color: #fff;
+  background: #0c1558;
+}

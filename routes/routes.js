@@ -36,11 +36,6 @@ module.exports = function (app) {
             next();
         }
     });
-    // app.get('/categories/resource/*',function (req, res, next) {
-
-    //     var redirectURL = req.url.toString().replace(/\/categories\/resource\//,"/resource/");
-    //     req.location(redirectURL);
-    // });
     app.get('/categories/*', function (req, res, next) {
 
         var arr = (req.url.toString()).split('/');
@@ -100,7 +95,13 @@ module.exports = function (app) {
 
         var videoIndex = parseInt(req.params.id, 10);
 
-        videoPreview(videoIndex, req, res, next, function (err) { });
+        videoPreview(videoIndex,"lq_content", req, res, next, function (err) { });
+    });
+    app.get('/hq/:id', function (req, res, next) {
+
+        var videoIndex = parseInt(req.params.id, 10);
+
+        videoPreview(videoIndex,"hq_content", req, res, next, function (err) { });
     });
 
     app.get('/login', function (req, res, next) {
