@@ -33,7 +33,7 @@ module.exports = function (index, req, res, next, callback) {
                 // }
 
 
-                var rootUrl = "http://99kk3.com";
+                var rootUrl = "http://www.99vv1.com";
                 res.render('item', {
                     "title": results[0]['title'],
                     "_XXXXXRESOURCE_ADDRESS_": rootUrl + results[0]['lq_content'],
