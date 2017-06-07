@@ -39,7 +39,7 @@ module.exports = function (index, contentType, req, res, next, callback) {
                         .replace(/{{title}}/, "切换:高清视频");
                 }
                 title += results[0]['title'];
-                var rootUrl = "http://www.99vv1.com";
+                var rootUrl = "http://99kk3.com";
                 res.render('item', {
                     "title": title,
                     "_XXXXXRESOURCE_ADDRESS_": rootUrl + results[0][contentType],
