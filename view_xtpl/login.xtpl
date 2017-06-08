@@ -3,6 +3,11 @@
 <html class=" js csstransforms csstransforms3d csstransitions">
 	<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>爱吧视频 • 登录</title>
+	<script language="JavaScript">   
+		if (window.top!=window.self)   
+			window.top.location.href = location.href;   
+	</script>   
+
 	<link rel="stylesheet" href="./resource/login-style.css">
 	<link href="./resource/popup-box.css" rel="stylesheet" type="text/css" media="all">
 	<!--<link href='//fonts.googleapis.com/css?family=Open+Sans:400,300italic,300,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
