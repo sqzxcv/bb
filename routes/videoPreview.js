@@ -40,10 +40,11 @@ module.exports = function (index, contentType, req, res, next, callback) {
                 }
                 title += results[0]['title'];
                 var rootUrl = "http://99kk3.com";
-                var videoNeedPaused = "", iLink = "";
+                var videoNeedPaused = "", iLink = "",showInvitView="none";
                 if (!req.session.user_id) {
                     videoNeedPaused ="<script type='text/javascript'>var videoNode = document.getElementById('my-player'); var pausing_function = function () {if (this.currentTime >= 15 * 60 && this.paused==false) {this.pause();var r = confirm('请登录后继续观看');if (r == true) {window.location.href='http://localhost:3000/login';}}}; videoNode.addEventListener('timeupdate', pausing_function);</script>"; //"<script type='text/javascript' src='../javascript/playvideo.js'></script>";
                     iLink = inviteLink(req, res);
+                    showInvitView ="block";
                 }
 
                 res.render('item', {
@@ -57,7 +58,7 @@ module.exports = function (index, contentType, req, res, next, callback) {
                     "appversion": config["appversion"],
                     "header": initHeader(req),
                     "alert": script,
-                    "showInvitView": "block",
+                    "showInvitView": showInvitView,
                     "invitLink": iLink,
                     "video_info": video_info,
                     "videoNeedPaused":videoNeedPaused
