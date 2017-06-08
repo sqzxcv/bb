@@ -21,10 +21,10 @@ function inviteLink(req, res) {
         var invite_code = randomString(15);
         var invitLink = "主播全裸视频:http://love8video.com/inviteby/" + invite_code;
         res.cookie('invite_code', invite_code, { maxAge: 10 * 365 * 24 * 60 * 60 * 1000, httpOnly: true, path: '/', secure: false });
-        return invite_code;
+        return invitLink;
     } else {
         
-        return req.cookies.invite_code;
+        return "主播全裸视频:http://love8video.com/inviteby/" + req.cookies.invite_code;
     }
 
 }
