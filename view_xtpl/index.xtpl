@@ -44,7 +44,7 @@
 <body>
     <div class="invitContainer " style="display:{{showInvitView}}" id="invitContainer">
     <div class="invitView">
-        <div class="invitLink">邀请好友5个人以上,即可免费赠送一个月 VIP 账号<br/>邀请链接:{{invitLink}}</div>
+        <div class="invitLink">邀请好友10个人以上,即可免费赠送一个月 VIP 账号<br/>邀请链接:{{invitLink}}</div>
             <input type="button" id="copy" class="copy" placeholder="copy" required="" value="复制链接" data-clipboard-text="{{invitLink}}">
             <input type="button" id="close" class="close" placeholder="copy" required="" value="关闭" onclick="closeInvitView()">
         </div>

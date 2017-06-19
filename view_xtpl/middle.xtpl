@@ -99,53 +99,43 @@ $(function(){
 					 <input type="hidden" name="host" id="host" value="www.99vv1.com">
      	<div class="slideTxtBox">
 			<div class="hd">
-
 				<!-- 下面是前/后按钮代码，如果不需要删除即可 -->
 				<span class="arrow"><a class="next"></a><a class="prev"></a></span>
-
 				<ul><li val="1" class="on">月卡</li><li val="3" class="">季卡</li><li val="6" class="">半年卡</li><li val="12" class="">年卡</li>
-                
-                </ul>
+        </ul>
 			</div>
 			<div class="bd">
 				<ul style="display: block;">     
-				<div class="vipcard-bd">
-  <ul>
-        	<li><div class="listimgbox"><a href=""><img src="./resource/v1.jpg"><p class="listsubt"><em><strong>30天</strong>期限<br><strong>58元</strong>价格<br><strong>1.9元</strong>/天</em></p></a></div>
-            </li>
-            
-        </ul>
-        </div> 
+            <div class="vipcard-bd">
+                <ul>
+                  <li><div class="listimgbox"><a href=""><img src="./resource/v1.jpg"><p class="listsubt"><em><strong>30天</strong>期限<br><strong>58元</strong>价格<br><strong>1.9元</strong>/天</em></p></a></div>
+                  </li>
+                </ul>
+            </div> 
 				</ul>
-				<ul style="display: none;">
-                     
-			<div class="vipcard-bd">
-  <ul>
-        	<li><div class="listimgbox"><a href=""><img src="./resource/v2.jpg"><p class="listsubt"><em><strong>90天</strong>期限<br><strong>138元</strong>价格<br><strong>1.5元</strong>/天</em></p></a></div>
-            </li>
-            
-        </ul>
-        </div> 
+				<ul style="display: none;">            
+            <div class="vipcard-bd">
+                  <ul>
+                    <li><div class="listimgbox"><a href=""><img src="./resource/v2.jpg"><p class="listsubt"><em><strong>90天</strong>期限<br><strong>138元</strong>价格<br><strong>1.5元</strong>/天</em></p></a></div>
+                    </li>
+                  </ul>
+            </div> 
 				</ul>
-				<ul style="display: none;">
-                      
-					<div class="vipcard-bd">
-  <ul>
-        	<li><div class="listimgbox"><a href=""><img src="./resource/v3.jpg"><p class="listsubt"><em><strong>180天</strong>期限<br><strong>238元</strong>价格<br><strong>1.3元</strong>/天</em></p></a></div>
-           </li>
-            
-        </ul>
-        </div> 
+				<ul style="display: none;">             
+              <div class="vipcard-bd">
+                <ul>
+                    <li><div class="listimgbox"><a href=""><img src="./resource/v3.jpg"><p class="listsubt"><em><strong>180天</strong>期限<br><strong>238元</strong>价格<br><strong>1.3元</strong>/天</em></p></a></div>
+                    </li> 
+                </ul>
+            </div> 
 				</ul>
-                <ul style="display: none;">
-                     
-					<div class="vipcard-bd">
-  <ul>
-        	<li><div class="listimgbox"><a href=""><img src="./resource/v4.jpg"><p class="listsubt"><em><strong>365天</strong>期限<br><strong>365元</strong>价格<br><strong>1元</strong>/天</em></p></a></div>
-           </li>
-            
-        </ul>
-        </div>
+        <ul style="display: none;">          
+            <div class="vipcard-bd">
+                  <ul>
+                      <li><div class="listimgbox"><a href=""><img src="./resource/v4.jpg"><p class="listsubt"><em><strong>365天</strong>期限<br><strong>365元</strong>价格<br><strong>1元</strong>/天</em></p></a></div>
+                      </li>
+                  </ul>
+            </div>
 				</ul>
 			</div>
 		</div>

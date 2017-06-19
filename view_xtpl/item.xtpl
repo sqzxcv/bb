@@ -4,6 +4,8 @@
 {{#block ("head")}}
 <link href="../resource/style.css" rel="stylesheet">
 <link href="../stylesheets/detail.css" rel="stylesheet">
+<link href="../stylesheets/reset.css" rel="stylesheet">
+<script type="text/javascript" src="../javascript/playvideo.js"></script>
 <style type="text/css">
     .test {
         height: 100%;
@@ -35,9 +37,40 @@
 </div>
 {{/block}}
 <center>
-    <iframe class="frameclass" scrolling="no" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" src="data:text/html;charset=utf-8,&lt;html&gt;&lt;head&gt;&lt;link href=&quot;https://cdn.staticfile.org/video.js/6.0.1/alt/video-js-cdn.min.css&quot; rel=&quot;stylesheet&quot;&gt;&lt;script src=&quot;https://cdn.staticfile.org/video.js/6.0.1/video.min.js&quot;&gt;&lt;/script&gt;&lt;/head&gt;&lt;body&gt;&lt;center&gt;&lt;div class=&quot;test&quot; style=&quot; object-fit:cover;max-width:  {{XXXWIDTH_}};max-height:{{XXXHEIGHT_}};&quot;&gt;&lt;video id=&quot;my-player&quot; class=&quot;video-js vjs-default-skin vjs-fluid vjs-big-play-centered&quot; width=&quot;100%&quot; height=&quot;100%&quot; style=&quot;&quot; controls preload=&quot;auto&quot; poster=&quot;{{_XXXPREVIEW_ADDR_}}&quot; data-setup=&#x27;{}&#x27;&gt;&lt;source src=&quot;{{_XXXXXRESOURCE_ADDRESS_}}&quot; type=&quot;video/mp4&quot;&gt;&lt;/source&gt;&lt;p class=&quot;vjs-no-js&quot;&gt;To view this video please enable JavaScript, and consider upgrading to a web browser that&lt;a href=&quot;http://videojs.com/html5-video-support/&quot; target=&quot;_blank&quot;&gt;supports HTML5 video&lt;/a&gt;&lt;/p&gt;&lt;/video&gt;&lt;/div&gt;&lt;/center&gt;{{{videoNeedPaused}}}}&lt;/body&gt;&lt;/html&gt;"></iframe>
+    <iframe class="frameclass" scrolling="no" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" 
+    src="data:text/html;charset=utf-8,
+    &lt;html&gt;
+  
+  &lt;head&gt;
+    &lt;link href=&quot;https://cdn.staticfile.org/video.js/6.0.1/alt/video-js-cdn.min.css&quot; rel=&quot;stylesheet&quot;&gt;
+    &lt;script src=&quot;https://cdn.staticfile.org/video.js/6.0.1/video.min.js&quot;&gt;&lt;/script&gt;
+  &lt;/head&gt;
+  
+  &lt;body&gt;
+    &lt;center&gt;
+      &lt;div class=&quot;test&quot; style=&quot; object-fit:cover;max-width:  {{XXXWIDTH_}};max-height:{{XXXHEIGHT_}};&quot;&gt;
+        &lt;video id=&quot;my-player&quot; class=&quot;video-js vjs-default-skin vjs-fluid vjs-big-play-centered&quot; width=&quot;100%&quot; height=&quot;100%&quot; style=&quot;&quot; controls preload=&quot;auto&quot; poster=&quot;{{_XXXPREVIEW_ADDR_}}&quot; data-setup=&#x27;{}&#x27;&gt;
+          &lt;source src=&quot;{{_XXXXXRESOURCE_ADDRESS_}}&quot; type=&quot;video/mp4&quot;&gt;&lt;/source&gt;
+          &lt;p class=&quot;vjs-no-js&quot;&gt;To view this video please enable JavaScript, and consider upgrading to a web browser that
+            &lt;a href=&quot;http://videojs.com/html5-video-support/&quot; target=&quot;_blank&quot;&gt;supports HTML5 video&lt;/a&gt;&lt;/p&gt;
+        &lt;/video&gt;
+      &lt;/div&gt;
+    &lt;/center&gt;{{{videoNeedPaused}}}}&lt;/body&gt;
+
+&lt;/html&gt;"></iframe>
     <div class="videoinfo-panel">
             {{{video_info}}}
+    </div>
+    <div class="cd-popup" role="alert">
+        <div class="cd-popup-container">
+            <div class="siginin">
+            </div>
+            <ul class="cd-buttons">
+                <li><a href="http://love8video.com/login">登录</a></li>
+                <li><a class="cd-popup-cancel" href="#">取消</a></li>
+            </ul>
+            <a href="#" class="cd-popup-close img-replace">关闭</a>
+        </div> <!-- cd-popup-container -->
     </div>
 </center>
 {{/block}}
