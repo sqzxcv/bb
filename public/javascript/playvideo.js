@@ -31,10 +31,10 @@ jQuery(document).ready(function ($) {
     });
 
     if (typeof window.addEventListener != 'undefined') {
-        window.addEventListener('message', onmessage, false);
+        window.addEventListener('pasueVideo', onmessage, false);
     } else if (typeof window.attachEvent != 'undefined') {
         //兼容IE
-        window.attachEvent('onmessage', onmessage);
+        window.attachEvent('pasueVideo', onmessage);
     }
 });
 
