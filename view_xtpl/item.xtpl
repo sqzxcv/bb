@@ -55,7 +55,7 @@
             &lt;a href=&quot;http://videojs.com/html5-video-support/&quot; target=&quot;_blank&quot;&gt;supports HTML5 video&lt;/a&gt;&lt;/p&gt;
         &lt;/video&gt;
       &lt;/div&gt;
-    &lt;/center&gt;{{{videoNeedPaused}}}}&lt;/body&gt;
+    &lt;/center&gt;{{{videoNeedPaused}}}&lt;/body&gt;
 
 &lt;/html&gt;"></iframe>
     <div class="videoinfo-panel">
