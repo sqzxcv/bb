@@ -123,7 +123,8 @@
 
 </script>
 <div id="myDiv" class="wechat-code">
-<img src="./images/code.jpeg" alt="微信二维码">
-<div class="wechattitle" style="text-align:center;margin-top:-15px;color:#e91e63">微信客户:churujian88</div><div class="wechattitle" style="text-align:center;color:#e91e63;">扫码获取 VIP 账户</div>
+<img src="./images/code.jpg" alt="微信二维码">
+<div class="wechattitle" style="text-align:center;margin-top:-15px;color:#e91e63">微信客户:ai8video
+</div><div class="wechattitle" style="text-align:center;color:#e91e63;">扫码获取 VIP 账户</div>
 </div>
 </body></html>
