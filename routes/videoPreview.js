@@ -42,7 +42,7 @@ module.exports = function (index, contentType, req, res, next, callback) {
                 var rootUrl = "http://99kk5.com";
                 var videoNeedPaused = "", iLink = "",showInvitView="none";
                 if (!req.session.user_id) {
-                    videoNeedPaused ="<script type='text/javascript'>var videoNode = document.getElementById('my-player'); var pausing_function = function () {if (this.currentTime >= 15 * 60 && this.paused==false) {this.pause();parent.postMessage('pasueVideo','*');}}; videoNode.addEventListener('timeupdate', pausing_function);</script>";
+                    videoNeedPaused ="<script type='text/javascript'>var videoNode = document.getElementById('my-player'); var pausing_function = function () {if (this.currentTime >= 8 * 60 && this.paused==false) {this.pause();parent.postMessage('pasueVideo','*');}}; videoNode.addEventListener('timeupdate', pausing_function);</script>";
                     iLink = inviteLink(req, res);
                     showInvitView ="block";
                 }
