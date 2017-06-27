@@ -37,7 +37,7 @@ module.exports = function (req, res, next, callback) {
         connection.query("select * from user where username=?", [username], function (err, results, fields) {
 
             connection.release();
-            if (results.length == 1 && results[0]['pwd'] == pwd) {
+            if (results.length == 1 && results[0]['pwd'] == pwd && results[0]['expirestime'] < moment.unix()) {
 
                 req.session.user = username;
                 req.session.user_id = results[0]['uid'];

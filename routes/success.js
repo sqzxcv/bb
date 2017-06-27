@@ -35,7 +35,7 @@ module.exports = function (req, res, next, callback) {
 
         genUsername(6, function (username) {
 
-            var expirestime = moment().add(1, 'months').unix();
+            var expirestime = moment().add(7, 'days').unix();
             var pwd = randomString(6);
             connection.query("insert into user(username,pwd,expirestime) values(?,?,?)", [username, pwd, expirestime], function (err, results, fields) {
 

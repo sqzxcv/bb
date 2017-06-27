@@ -66,6 +66,7 @@
 						</div>
 						<div class="tipsInfo" id="tipsInfo">
 							<p>用户名或密码不正确,请重试</p>
+							<p>如果账户过期请续费</p>
 						</div>        
 			</div>
 			<input type="text" id="username" class="username" placeholder="VIP账号" required="">
