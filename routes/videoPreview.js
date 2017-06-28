@@ -26,7 +26,7 @@ module.exports = function (index, contentType, req, res, next, callback) {
 
                 var script = "";
                 // if (!req.session.user_id && results[0]["videoid"] > 2500) {
-                //     script = "<script>alert('请登陆后观看.如果没有账号,请添加微信 ruchujian88或者发送邮件到 love8video@gmail.com 领取 VIP 账号.Please log in. If there is no account, please add wechat ruchujian88 or send an email to love8video@gmail.com to receive VIP account.')</script><script>document.location='/login'</script>";
+                //     script = "<script>alert('请登陆后观看.如果没有账号,请添加微信 ai8video或者发送邮件到 love8video@gmail.com 领取 VIP 账号.Please log in. If there is no account, please add wechat ai8video or send an email to love8video@gmail.com to receive VIP account.')</script><script>document.location='/login'</script>";
                 // }
                 var title = "",
                     video_info = "<a class='copy' href='{{check_video_add}}'>{{title}}</a>";

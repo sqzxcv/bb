@@ -139,7 +139,7 @@ module.exports = function (index, tagname, req, res, next, callback) {
 
                         var script = "";
                         if (!req.session.user_id && tagLocalName == "最新视频") {
-                            script = "<script>alert('请登陆后观看.如果没有账号,请添加微信 ruchujian88或者发送邮件到 love8video@gmail.com 领取 VIP 账号.Please log in. If there is no account, please add wechat ruchujian88 or send an email to love8video@gmail.com to receive VIP account.')</script><script>document.location='/login'</script>";
+                            script = "<script>alert('请登陆后观看.如果没有账号,请添加微信 ai8video或者发送邮件到 love8video@gmail.com 领取 VIP 账号.Please log in. If there is no account, please add wechat ai8video or send an email to love8video@gmail.com to receive VIP account.')</script><script>document.location='/login'</script>";
                         }
 
                         res.render('index', {
