@@ -155,7 +155,7 @@ body {
   font-weight: 400;
   color: #31313b;
   min-width: 320px;
-  background: #ffffff url(../resource/bg.jpg) repeat 0 0;
+  background: #ffffff;
   margin: 0px;
   padding: 0px;
   position: relative;
@@ -186,7 +186,7 @@ body,
 
 /*top spots*/
 .wrap-head-spots {
-  background: #ffffff url(../resource/bg.jpg) repeat 0 0;
+  background: #ffffff;
   position: relative;
   z-index: 20;
 }
