@@ -981,6 +981,10 @@ nav ul li.active a {
 /*sidebar*/
 
 /*main*/
+.main {
+  max-width: 955px;
+}
+
 .sidebar + .main {
   margin-right: 260px;
 }
