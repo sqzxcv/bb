@@ -66,7 +66,7 @@ module.exports = function (index, tagname, req, res, next, callback) {
         if (tagname == "最新视频" || tagname == "latest-updates") tagname = "";
         if (tagname.length != 0) {
             sqlPageCountStr = "select count(*) as count from videos where videoid in (select videoid from tagmap where tagname='" + tagname + "')";
-            sqlstr = "select * from videos where videoid in (select videoid from tagmap where tagname='" + tagname + "') order by videoid desc limit " + videoCountPage * index + ", " + videoCountPage + ";"
+            sqlstr = "select * from videos where videoid in (select videoid from tagmap where tagname='" + tagname + "') order by upload_time desc, videoid desc limit " + videoCountPage * index + ", " + videoCountPage + ";"
         } else {
             sqlPageCountStr = "select count(*) as count from videos";
 
