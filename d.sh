@@ -1,2 +1,2 @@
 #!/bin/bash
-pm2 deploy ecosystem.config.js production
+git pull&&pm2 deploy ecosystem.config.js production
