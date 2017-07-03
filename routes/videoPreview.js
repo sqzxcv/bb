@@ -31,7 +31,7 @@ module.exports = function (index, contentType, req, res, next, callback) {
                 var title = "",
                     video_info = "<a class='copy' href='{{check_video_add}}'>{{title}}</a>";
                 if (contentType == "hq_content") {
-                    title += "(高清)";
+                    title += "(高清,请登录....)";
                     video_info = video_info.replace(/{{check_video_add}}/g, "/detail/" + index)
                         .replace(/{{title}}/, "切换:标准清晰度");
                 } else {
