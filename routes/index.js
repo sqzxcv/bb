@@ -72,7 +72,7 @@ module.exports = function (index, tagname, req, res, next, callback) {
 
             if (true) {
                 // if (req.session.user_id) {
-                sqlstr = "select * from videos order by videoid desc limit " + videoCountPage * index + ", " + videoCountPage + ";";
+                sqlstr = "select * from videos order by upload_time desc, videoid desc limit " + videoCountPage * index + ", " + videoCountPage + ";";
             } else {
                 sqlstr = "select * from videos order by videoid ASC limit " + videoCountPage * index + ", " + videoCountPage + ";";
             }
