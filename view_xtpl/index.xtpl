@@ -19,7 +19,7 @@
     <link href="../resource/adv.css" rel="stylesheet">
     <link href="../stylesheets/style.css" rel="stylesheet">
     <link href="../stylesheets/common.css" rel="stylesheet">
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.staticfile.org/jquery/1.4.1/jquery.min.js"></script>
     <script type="text/javascript" src="../javascript/common.js"></script>
     <script type="text/javascript" src="https://cdn.staticfile.org/clipboard.js/1.6.1/clipboard.min.js"></script>
     <!-- <script async="" src="../resource/analytics.js"></script> -->
