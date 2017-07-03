@@ -98,7 +98,7 @@
                         <div class="main">
                             <div class="wrap-heading">
                                 <div class="wrap-title">
-                                    <h1 class="title">最新上传</h1>
+                                    <h1 class="title">{{tabtitle}}</h1>
                                     <span class="c-video">{{video_count}}</span></div>
                                 <ul class="time-view NeedHidden" data-block="list_videos_common_videos_list">
                                     <li>

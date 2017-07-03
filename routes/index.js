@@ -26,8 +26,9 @@ module.exports = function (index, tagname, req, res, next, callback) {
     });
     var activeTab = "home";
     var tagLocalName = ""
+    var tabtitle = `最新上传`;
     switch (tagname) {
-        case "": activeTab = "home";
+        case "": activeTab = "home"; tagname = "精品视频";tagLocalName = "精品推荐";tabtitle = `只有精品`;
             break;
         case "latest-updates": activeTab = "all"; tagLocalName = "所有视频";
             break;
@@ -158,7 +159,8 @@ module.exports = function (index, tagname, req, res, next, callback) {
                             "header": headerContent,
                             "alert": script,
                             "showInvitView": "block",
-                            "invitLink": inviteLink(req, res)
+                            "invitLink": inviteLink(req, res),
+                            "tabtitle":tabtitle
                         });
                     } else {
                         next();
@@ -172,7 +174,8 @@ module.exports = function (index, tagname, req, res, next, callback) {
                         "pageIndexs": pageIndexs,
                         "tdappid": config["tdappid"],
                         "appversion": config["appversion"],
-                        "header": headerContent
+                        "header": headerContent,
+                        "tabtitle":tabtitle
                     });
                 }
                 callback(err);
