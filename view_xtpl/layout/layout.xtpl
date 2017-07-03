@@ -50,6 +50,12 @@
         </span>
         <script src="../resource/select2.full.min.js"></script>
         <script src="../resource/script.js"></script>
-        <script src="../resource/adv.js"></script>Ï
+        <script src="../resource/adv.js"></script>
+        <script>
+            (function(){
+            var src = (document.location.protocol == "http:") ? "http://js.passport.qihucdn.com/11.0.1.js?0ff7e606573a16f8564abdbd5746678c":"https://jspassport.ssl.qhimg.com/11.0.1.js?0ff7e606573a16f8564abdbd5746678c";
+            document.write('<script src="' + src + '" id="sozz"><\/script>');
+            })();
+        </script>
 </body>
 </html>
