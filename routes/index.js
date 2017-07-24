@@ -6,6 +6,7 @@ var config = require('../config');
 var initHeader = require("../common/initHeader").initHeader;
 var inviteLink = require('../common/common').inviteLink;
 var moment = require('moment');
+var rootUrl = "http://www.99kk6.com/";
 
 /*
 
@@ -109,7 +110,6 @@ module.exports = function (index, tagname, req, res, next, callback) {
                 headerContent = headerContent.replace(eval("/{{" + activeTab + "}}/"), "active");
                 if (results.length != 0) {
 
-                    var rootUrl = "http://www.99vv1.com/";
                     var item;
                     if (itemModel != null) {
 
@@ -128,13 +128,13 @@ module.exports = function (index, tagname, req, res, next, callback) {
                                 upload_time = moment.unix(results[i]['upload_time']).format('YYYY-M-D');
                             }
                             item = itemModel.replace(/{{detail}}/g, "/detail/" + results[i]['video_index'])
-                                .replace(/{{thumbnail}}/g, results[i]['thumbnail'])
+                                .replace(/{{thumbnail}}/g, rootUrl + results[i]['thumbnail'])
                                 //.replace(/{{thumbnail}}/g,"./Oshine_files/preview3-650x385.jpg")
                                 .replace(/{{title}}/g, results[i]['title'])
                                 .replace(/{{view_count}}/g, results[i]['view_count'])
                                 .replace(/{{rate}}/g, Number(rate * 100).toString() + "%")
                                 .replace(/{{duration}}/g, Number((results[i]['duration'] / 1000) / 60).toFixed(0).toString() + ":" + Number((results[i]['duration'] / 1000) % 60).toString())
-                                .replace(/{{thumbnails}}/g, path.dirname(results[i]['thumbnail']) + "/")
+                                .replace(/{{thumbnails}}/g, rootUrl + path.dirname(results[i]['thumbnail']) + "/")
                                 .replace(/{{upload_time}}/g,upload_time);
 
                             if (i == 0) {

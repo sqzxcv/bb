@@ -3,6 +3,7 @@ var async = require("async");
 var config = require('../config');
 var inviteLink = require('../common/common').inviteLink;
 var initHeader = require("../common/initHeader").initHeader;
+var rootUrl = "http://www.99kk6.com/";
 
 module.exports = function (index, contentType, req, res, next, callback) {
 
@@ -39,7 +40,6 @@ module.exports = function (index, contentType, req, res, next, callback) {
                         .replace(/{{title}}/, "切换:高清视频");
                 }
                 title += results[0]['title'];
-                var rootUrl = "http://99kk5.com";
                 var videoNeedPaused = "", iLink = "",showInvitView="none";
                 if (!req.session.user_id) {
                     videoNeedPaused ="<script type='text/javascript'>var videoNode = document.getElementById('my-player'); var pausing_function = function () {if (this.currentTime >= 8 * 60 && this.paused==false) {this.pause();parent.postMessage('pasueVideo','*');}}; videoNode.addEventListener('timeupdate', pausing_function);</script>";
@@ -50,7 +50,7 @@ module.exports = function (index, contentType, req, res, next, callback) {
                 res.render('item', {
                     "title": title,
                     "_XXXXXRESOURCE_ADDRESS_": rootUrl + results[0][contentType],
-                    '_XXXPREVIEW_ADDR_': "http://" + results[0]['preview_url'],
+                    '_XXXPREVIEW_ADDR_': rootUrl + results[0]['preview_url'],
                     'XXXWIDTH_': results[0]['width'],
                     'XXXHEIGHT_': results[0]['height'],
                     "FrameXXXHEIGHT_": results[0]['height'] + 10,
